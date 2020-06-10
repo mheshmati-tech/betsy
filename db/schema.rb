@@ -24,5 +24,4 @@ ActiveRecord::Schema.define(version: 2020_06_10_172204) do
     t.string "photo_url"
     t.integer "stock"
   end
-
 end
