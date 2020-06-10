@@ -14,15 +14,15 @@
       
       <nav class="app-header__nav">
         <ul class="nav app-header__site-nav-container">
-          <%# if @login_user %>
+          <% if session[:user_id] %>
             <li class="nav-item app-header__nav_item">
               <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>
             </li>
-          <%# else %>
+          <% else %>
             <li class="nav-item app-header__nav_item">
               <%= link_to "Login with Github", github_login_path, class: "btn btn-primary" %>
             </li>
-          <%# end %>
+          <% end %>
         </ul>
       </nav>
 
