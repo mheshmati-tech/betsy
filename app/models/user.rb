@@ -10,4 +10,7 @@ class User < ApplicationRecord
         return user
     end
 
+    validates :uid, presence: true, numericality: {only_integer: true}, uniqueness: true
+    validates :provider, presence: true
+
 end

@@ -11,6 +11,14 @@
 
   <body>
     <header>
+      <section class="flash-msg__section">
+        <% flash.each do |name, message| %>
+          <strong class="<%= name %>">
+            <%= message %>
+          </strong>
+        <% end %>
+      </section>
+
       <%# if @login_user %>
         <li class="nav-item app-header__nav_item">
           <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>

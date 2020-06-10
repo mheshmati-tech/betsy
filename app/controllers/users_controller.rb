@@ -24,18 +24,18 @@ class UsersController < ApplicationController
       else
         # if there's a bug
         flash[:error] = "Could not create new user account: #{user.errors.messages}"
-        return redirect_to users_path
+        return redirect_to root_path
       end
     end
     # valid user
     session[:user_id] = user.id
-    return redirect_to users_path
+    return redirect_to root_path
   end
 
   def destroy
     session[:user_id] = nil
     flash[:success] = "Successfully logged out!"
-    redirect_to users_path
+    redirect_to root_path
   end
 
 end
