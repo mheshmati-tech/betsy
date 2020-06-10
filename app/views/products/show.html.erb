@@ -1,0 +1,9 @@
+<main>
+	<section>
+        <h2> <%= @product.name%> <h2>
+        <p>  <%= @product.description %> </p>
+        <p> $ <%= @product.price%> </p>
+        <p> <%= @product.stock %> </p>
+        <%= image_tag @product.photo_url, alt: "products packaging appearance" %>
+	</section>
+</main>
