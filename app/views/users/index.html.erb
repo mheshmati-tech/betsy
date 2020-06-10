@@ -1,6 +1,4 @@
 <h1>users</h1>
-<%@users%>
 <%@users.each do |user|%>
-<p>hi</p>
-  <p><%user[:username]%></p>
+  <p>User: <%=user.username%></p>
 <%end%>

@@ -1,15 +1,14 @@
-USERS = [{username: 'hi',email: 'abc@gmail.com', uid: 12345, provider: 'github'}]
 
 
 class UsersController < ApplicationController
 
   def index
-    @users = USERS
+    @users = User.all
   end
 
   def show
-    # @user = User.find_by(id: params[:id])
-    # render_404 unless @user
+    @user = User.find_by(id: params[:id])
+    render_404 unless @user
   end
 
   def create

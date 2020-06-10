@@ -11,18 +11,15 @@
 
   <body>
     <header>
-      <% if @login_user %>
-        <li class="nav-item app-header__nav_item">
-          <%= link_to "Logged in as #{@login_user.username}", user_path(@login_user.id), class: "btn btn-primary" %>
-        </li>
+      <%# if @login_user %>
         <li class="nav-item app-header__nav_item">
           <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>
         </li>
-      <% else %>
+      <%# else %>
         <li class="nav-item app-header__nav_item">
           <%= link_to "Login with Github", github_login_path, class: "btn btn-primary" %>
         </li>
-      <% end %>
+      <%# end %>
 
     </header>
     <%= yield %>
