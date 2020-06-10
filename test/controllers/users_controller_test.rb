@@ -9,9 +9,7 @@ describe UsersController do
 
       user = users(:grace)
 
-      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
-
-      get auth_callback_path(:github)
+      perform_login(user)
 
       must_redirect_to root_path
 
@@ -27,9 +25,7 @@ describe UsersController do
 
       user = User.new(uid: 123456, provider: 'github')
 
-      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
-
-      get auth_callback_path(:github)
+      perform_login(user)
 
       must_redirect_to root_path
 
@@ -41,7 +37,48 @@ describe UsersController do
 
     end
 
-    it "redirects to the login route if given invalid user data" do
+    it "redirects to the root path if given invalid user data" do
+      start_count = User.count
+
+      user = User.new(uid: 12345, provider: 'github')
+      
+      perform_login(user)
+
+      must_redirect_to root_path
+
+      User.count.must_equal start_count
+    end
+
+  end
+
+  describe "index" do
+    it "gets index" do
+      get "/users"
+      must_respond_with :success
+    end
+  end
+
+  describe "show" do
+    it "will get show for valid ids" do
+      user = users(:grace)
+      get user_path(user.id)
+      must_respond_with :success
+    end
+    it "will respond with not_found for invalid id" do
+      get user_path(-1)
+      must_respond_with :not_found
+    end
+  end
+
+  describe "destroy" do
+    before do
+      user = users(:grace)
+      perform_login(user)
+    end
+    it "clears session and redirect to root path" do
+      delete logout_path
+      session[:user_id].must_equal nil
+      must_redirect_to root_path
     end
   end
   
