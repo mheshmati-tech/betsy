@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "users#create", as: 'auth_callback'
   delete "/logout", to: "users#destroy", as: "logout"
 
-  root to: 'users#index'
+  root to: "homepages#index"
 
   resources :users, only: [:index, :show]
   resources :products

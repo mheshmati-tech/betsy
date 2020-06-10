@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
       # TODO - we want to redirect to users products
       return
     else
-      flash.now[:error] = "Unable to add #{@product.name}"
+      flash.now[:error] = "Unable to add #{@product.name}. Errors: #{@product.errors.messages}"
       render :new
       return
     end
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
       # TODO - we want to redirect to users products
       return
     else
-      flash.now[:error] = "Unable to edit #{@product.name}"
+      flash.now[:error] = "Unable to edit #{@product.name}. Errors: #{@product.errors.messages}"
       render :edit
       return
     end
