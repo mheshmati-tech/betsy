@@ -35,10 +35,10 @@ class ProductsController < ApplicationController
     if @product.update(
       product_params
     )
-    flash[:success] = "#{@product.name} successfully edited"
-    redirect_to products_path
-    # TODO - we want to redirect to users products
-    return
+      flash[:success] = "#{@product.name} successfully edited"
+      redirect_to products_path
+      # TODO - we want to redirect to users products
+      return
     else
       flash.now[:error] = "Unable to edit #{@product.name}"
       render :edit
@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     if @product.destroy
       flash[:success] = "#{@product.name} successfully deleted"
       redirect_to root_path
-      # TODO - what happens to a products associated data? 
+      # TODO - what happens to a products associated data?
     end
   end
 
