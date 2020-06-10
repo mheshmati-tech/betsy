@@ -47,6 +47,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    if @product.destroy
+      flash[:success] = "#{@product.name} successfully deleted"
+      redirect_to root_path
+      # TODO - what happens to a products associated data? 
+    end
   end
 
   private
