@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
     @product = Product.new(
       product_params
     )
+    @product.user_id = @logged_user.id
     if @product.save
       flash[:success] = "#{@product.name} successfully added!"
       redirect_to products_path
