@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   root to: "homepages#index"
 
   resources :users, only: [:index, :show]
-  resources :products
+  resources :products do
+    resources :order_items, only: [:create]
+  end
+
 
 
 end
