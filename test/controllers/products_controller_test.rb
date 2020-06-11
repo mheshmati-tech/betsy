@@ -59,6 +59,7 @@ describe ProductsController do
       expect(Product.last.description).must_equal new_puppy_toy[:product][:description]
       expect(Product.last.photo_url).must_equal new_puppy_toy[:product][:photo_url]
     end
+
     it "can not create a new product with invalid information" do
       new_puppy_toy[:product][:name] = nil
       expect { post products_path, params: new_puppy_toy }.wont_change "Product.count"
@@ -92,6 +93,7 @@ describe ProductsController do
         expect { patch product_path(-1), params: new_puppy_toy }.wont_change "Product.count"
         expect(flash[:error]).to be_present
       end
+      
       it "will not update if the params are invalid" do
         new_puppy_toy[:product][:name] = nil
         product = Product.first

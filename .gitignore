@@ -37,3 +37,5 @@ yarn-debug.log*
 
 # Ignore github credentials
 /.env
+
+coverage/*
