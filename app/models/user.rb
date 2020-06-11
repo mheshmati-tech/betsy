@@ -13,4 +13,6 @@ class User < ApplicationRecord
     validates :uid, presence: true, numericality: {only_integer: true}, uniqueness: true
     validates :provider, presence: true
 
+    has_many :products
+
 end

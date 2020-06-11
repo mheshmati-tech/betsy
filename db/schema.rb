@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_212846) do
     t.string "description"
     t.string "photo_url"
     t.integer "stock"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,5 +35,4 @@ ActiveRecord::Schema.define(version: 2020_06_10_212846) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
 end
