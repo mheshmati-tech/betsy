@@ -14,9 +14,13 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # @category = Category.new(
+    #   # product_params[category_ids][:name]
+    # )
     @product = Product.new(
       product_params
     )
+    # @category.save
     if @product.save
       flash[:success] = "#{@product.name} successfully added!"
       redirect_to products_path
@@ -66,7 +70,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock)
-    #TODO - category - add to params
+    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, category_ids: [])
   end
 end
