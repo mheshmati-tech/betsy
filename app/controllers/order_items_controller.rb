@@ -25,6 +25,12 @@ class OrderItemsController < ApplicationController
 
   end
 
+  def destroy
+    order_item = OrderItem.find_by(id: params[:id])
+    order_item.destroy
+    redirect_to order_path(@current_order.id)
+  end
+
   # private
   # def order_item_params
   #   return params.require(:order_item).permit(:id, :quantity, :product_id, :order_id)

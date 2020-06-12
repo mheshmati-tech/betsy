@@ -18,8 +18,8 @@
 						<td><%= link_to(product.name, product_path(product.id)) %></td>
 						<td><%= product.price %></td>
 						<td><%= order_item.quantity %></td>
-						<td> TODO item total </td>
-						<td> TODO delete item </td>
+						<td> <%= order_item.calculate_total %> </td>
+						<td><%= link_to("Remove", order_item_path(order_item.id), method: :delete) %></td>
 					</tr>
 				<% end %>
 			</tbody>
