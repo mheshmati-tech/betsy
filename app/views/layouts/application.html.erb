@@ -11,6 +11,8 @@
 		<header>
 			<nav class="app-header__nav">
 				<ul class="nav app-header__site-nav-container">
+					<%= link_to "View All Products", products_path, class: "btn btn-primary" %>
+
 					<% if @logged_user %>
 						<li class="nav-item app-header__nav_item">
 							<%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>
@@ -20,6 +22,12 @@
 							<%= link_to "Login with Github", github_login_path, class: "btn btn-primary" %>
 						</li>
 					<% end %>
+
+					<% if @current_order %>
+						<li class="nav-item app-header__nav_item">
+							<%= link_to "Shopping Cart", order_path(@current_order.id), class: "btn btn-primary" %>
+						</li>
+					<% end %>				
 				</ul>
 			</nav>
 			<section class="flash-msg__section">

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :order_items, only: [:create]
   end
+  resources :orders, only: [:show, :edit]
 
 
 

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def show
-    # @order_items = OrderItems.where(:order_id)
-    @order_items = Order.order_items
+    @order_items = OrderItem.where(order_id: @current_order.id)
+    # @order_items = Order.order_items
   end
 
   def create
