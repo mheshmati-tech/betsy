@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
+  # before_action to check that user is logged in before they create a product
 
   def index
     @products = Product.all
