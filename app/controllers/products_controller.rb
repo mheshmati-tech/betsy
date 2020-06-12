@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.all.collect { | category | [category.name, category.id] }
   end
 
   def create

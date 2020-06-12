@@ -1,9 +1,10 @@
 <section>
 	<%= form_with model: @product do |f| %>
-		<%= <div class="form-group">
+		<div class="form-group" >
 			<%= f.label :category %>
-			<%= f.select :category, options_for_select(:product, :category_ids, Category.all, :id, :name), class: "form-control" %>
-		<%= </div> %>
+			<%# @categories = Category.all.collect { | category | [category.name, category.id] } %>
+			<%= f.select :category, options_for_select(@categories), class: "form-control" %>
+		</div>
 		<div class="form-group">
 			<%= f.label :name %>
 			<%= f.text_field :name, class: "form-control" %>
