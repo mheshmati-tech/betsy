@@ -1,4 +1,28 @@
-<h1>Order Show Page</h1>
-<h2>Order #<%=@current_order.id%></h2>
-
-
+<main>
+	<h1>Order Show Page</h1>
+	<section class="media-table">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Product Name</th>
+					<th>Item Price</th>
+					<th>Quantity</th>
+					<th>Item Total</th>
+					<th>Remove From Cart</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @order_items.each do |order_item| %>
+					<%product = Product.where(id: order_item.product_id)[0]%>
+					<tr>
+						<td><%= link_to(product.name, product_path(product.id)) %></td>
+						<td><%= product.price %></td>
+						<td><%= order_item.quantity %></td>
+						<td> TODO item total </td>
+						<td> TODO delete item </td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</section>
+</main>
