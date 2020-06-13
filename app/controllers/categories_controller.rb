@@ -1,8 +1,10 @@
 class CategoriesController < ApplicationController
     # check that user is logged in before creating a category
+    before_action :find_category, only:[:show]
+
     def show
     end
-    
+
     def new
         @category = Category.new
     end
@@ -41,6 +43,14 @@ class CategoriesController < ApplicationController
     # end
 
     private
+
+    def find_category
+        @category = Category.find_by(id: params[:id])
+        if @category.nil?
+            redirect_to root_path #TODO - what is the best thing to do when prodcut is not found
+            return
+        end
+    end
 
     def category_params
         return params.require(:category).permit(:name)
