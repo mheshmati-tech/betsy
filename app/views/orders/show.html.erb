@@ -31,5 +31,6 @@
 			</tbody>
 		</table>
 		<p>Order Total: <%=@current_order.calculate_order_total %></p>
+	<p><%= link_to"Continue to checkout", edit_order_path(@current_order),class: "btn btn-primary" %></p>
 	</section>
 </main>

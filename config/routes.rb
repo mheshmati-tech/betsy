@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
 
   # OAuth routes
   get "/auth/github", as: "github_login"
-  get "/auth/:provider/callback", to: "users#create", as: 'auth_callback'
+  get "/auth/:provider/callback", to: "users#create", as: "auth_callback"
   delete "/logout", to: "users#destroy", as: "logout"
 
   root to: "homepages#index"
@@ -13,9 +12,6 @@ Rails.application.routes.draw do
   resources :products do
     resources :order_items, only: [:create]
   end
-  resources :orders, only: [:new, :show, :edit]
+  resources :orders, only: [:new, :show, :edit, :update]
   resources :order_items, only: [:update, :destroy]
-
-
-
 end
