@@ -1,12 +1,15 @@
 class CategoriesController < ApplicationController
     # check that user is logged in before creating a category
+    def show
+    end
+    
     def new
         @category = Category.new
     end
     
     def create
         @category = Category.create(category_params)
-        
+
         if @category.save
             flash[:sucess] = "Successfully created category"
             redirect_to root_path
