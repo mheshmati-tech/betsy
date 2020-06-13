@@ -2,9 +2,7 @@
 	<%= form_with model: @product do |f| %>
 		<div class="form-group" >
 			<%= f.label :category %>
-			<%= f.select :category, options_for_select(@categories), class: "form-control" %>
-			<%# f.select :category, collection_check_boxes(@categories, Category.all, :name, {:multiple => true}), class: "form-control" %>
-			<%# f.select :category, collection_select(:user, :category_ids, @categories, :id, :name, {:prompt => true, :multiple=>true }) %>
+			<%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, {}, {:multiple => true}) %>
 		</div>
 		
 		<div class="form-group">

@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @categories = Category.all.collect { | category | [category.name, category.id] }
   end
 
   def create
@@ -68,7 +67,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock)
-    #TODO - category - add to params
+    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, :user_id, category_ids: [])
   end
 end
