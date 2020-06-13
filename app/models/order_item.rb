@@ -7,5 +7,8 @@ class OrderItem < ApplicationRecord
     product = Product.find_by(id: self.product_id)
     return self.quantity * product.price
   end
+  def stock
+    product.stock
+  end
 
 end
