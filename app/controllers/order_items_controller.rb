@@ -4,13 +4,18 @@ class OrderItemsController < ApplicationController
   def create
     # product = Product.find_by(id: params[:product_id])
     order_item = OrderItem.new(quantity: params[:quantity], product_id: params[:product_id])
-
-    if @current_order
-      order_item.order_id = session[:order_id]
+    if !order_item.is_in_stock
+      flash[:error] = "Not enough inventory available."
+      redirect_to product_path(params[:product_id])
+      return
     else
-      @current_order = Order.create(order_status: "pending")
-      session[:order_id] = @current_order.id
-      order_item.order_id = @current_order.id
+      if @current_order
+        order_item.order_id = session[:order_id]
+      else
+        @current_order = Order.create(order_status: "pending")
+        session[:order_id] = @current_order.id
+        order_item.order_id = @current_order.id
+      end
     end
 
     if order_item.save
@@ -28,12 +33,11 @@ class OrderItemsController < ApplicationController
     if @order_item.update(order_item_params)
       flash[:success] = "Successfully updated order item."
       redirect_to order_path(@current_order.id)
-      return 
+      return
     else
       flash[:error] = "Unable to update your order. #{@order_item.errors.messages}."
-      return 
+      return
     end
-
   end
 
   def destroy

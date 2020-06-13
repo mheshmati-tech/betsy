@@ -13,5 +13,10 @@ Rails.application.routes.draw do
     resources :order_items, only: [:create]
   end
   resources :orders, only: [:new, :show, :edit, :update]
+  get "/orders/:id/finalize", to: "orders#finalize", as: "finalize_order"
+  patch "/orders/:id/place_order", to: "orders#place_order", as: "place_order"
+  patch "orders/:id/cancel", to: "orders#cancel_order", as: "cancel_order"
+  get "/orders/:id/confirmation", to: "orders#confirmation", as: "confirm_order"
+
   resources :order_items, only: [:update, :destroy]
 end
