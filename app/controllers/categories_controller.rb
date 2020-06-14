@@ -47,7 +47,7 @@ class CategoriesController < ApplicationController
     def find_category
         @category = Category.find_by(id: params[:id])
         if @category.nil?
-            redirect_to root_path #TODO - what is the best thing to do when prodcut is not found
+            head :not_found
             return
         end
     end
