@@ -8,10 +8,23 @@
 		<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 	</head>
 	<body>
-		<header>
+		<header class="app-header">
 			<nav class="app-header__nav">
+			<a class="navbar-brand" href="<%= root_path %>">p3tsy</a>
 				<ul class="nav app-header__site-nav-container">
-					<%= link_to "View All Products", products_path, class: "btn btn-primary" %>
+					<li class="nav-item dropdown">
+            			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Browse by Category
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              				<% @categories.each do |category| %>
+              					<a class="dropdown-item" href="<%= category_path(category.id) %>"><%= "#{category.name}" %></a>
+              				<% end %>
+            			</div>
+					</li>
+					<li class="nav-item app-header__nav_item">
+						<%= link_to "View All Products", products_path, class: "btn btn-primary" %>
+					</li>
 					<% if @logged_user %>
 						<li class="nav-item app-header__nav_item">
 							<%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>
@@ -26,7 +39,7 @@
 							<%= link_to "Shopping Cart", order_path(@current_order.id), class: "btn btn-primary" %>
 						</li>
 					<% else %>
-						<li>
+						<li class="nav-item app-header__nav_item">
 							<%= link_to "Shopping Cart", new_order_path, class: "btn btn-primary" %>
 						</li>
 					<% end %>
