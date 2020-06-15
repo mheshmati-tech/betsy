@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
+  # before_action to check that user is logged in before they create a product
 
   def index
     @products = Product.all
@@ -10,7 +11,6 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @categories = Category.all.collect { | category | [category.name, category.id] }
   end
 
   def create
@@ -20,7 +20,11 @@ class ProductsController < ApplicationController
     @product = Product.new(
       product_params
     )
+<<<<<<< HEAD
     # @category.save
+=======
+    @product.user_id = @logged_user.id
+>>>>>>> 0766c9b716f919946dab82dee24ca009e14c16be
     if @product.save
       flash[:success] = "#{@product.name} successfully added!"
       redirect_to products_path
@@ -70,6 +74,10 @@ class ProductsController < ApplicationController
   end
 
   def product_params
+<<<<<<< HEAD
     return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, category_ids: [])
+=======
+    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, :user_id, category_ids: [])
+>>>>>>> 0766c9b716f919946dab82dee24ca009e14c16be
   end
 end
