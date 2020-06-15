@@ -14,17 +14,10 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # @category = Category.new(
-    #   # product_params[category_ids][:name]
-    # )
     @product = Product.new(
       product_params
     )
-<<<<<<< HEAD
-    # @category.save
-=======
     @product.user_id = @logged_user.id
->>>>>>> 0766c9b716f919946dab82dee24ca009e14c16be
     if @product.save
       flash[:success] = "#{@product.name} successfully added!"
       redirect_to products_path
@@ -74,10 +67,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-<<<<<<< HEAD
-    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, category_ids: [])
-=======
     return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, :user_id, category_ids: [])
->>>>>>> 0766c9b716f919946dab82dee24ca009e14c16be
   end
 end
