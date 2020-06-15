@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2020_06_15_225557) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "rating"
     t.string "text"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|

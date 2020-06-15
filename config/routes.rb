@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   
   resources :categories, only: [:show, :new, :create]
 
-
-
   resources :order_items, only: [:update, :destroy]
+  
+  resources :reviews, except: [:index]
 end
