@@ -11,6 +11,23 @@ class OrderItemsController < ApplicationController
     else
       if @current_order
         order_item.order_id = session[:order_id]
+        existing_order_item = @current_order.order_items.find_by(product_id: params[:product_id])
+        if existing_order_item
+          new_quantity = existing_order_item.quantity += params[:quantity].to_i
+          if existing_order_item.stock < new_quantity
+            flash[:error] = "Not enough inventory available." 
+            redirect_to product_path(params[:product_id])
+            return
+          end
+          if existing_order_item.save
+            flash[:success] = "order item quantity successfuly updated."
+            redirect_to product_path(params[:product_id])
+          else
+            flash[:error] = "unable to update order item quantity."
+            redirect_to product_path(params[:product_id])
+          end
+          return
+        end
       else
         @current_order = Order.create(order_status: "pending")
         session[:order_id] = @current_order.id
@@ -20,11 +37,12 @@ class OrderItemsController < ApplicationController
 
     if order_item.save
       flash[:success] = "order item succesfully created"
-      redirect_to root_path
+      redirect_to product_path(params[:product_id])
+
       return
     else
       flash[:error] = "order item NOT succesfully created :( #{order_item.errors.messages}"
-      redirect_to root_path
+      redirect_to product_path(params[:product_id])
       return
     end
   end
