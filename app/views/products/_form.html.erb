@@ -2,18 +2,6 @@
 	<%= form_with model: @product do |f| %>
 		<div class="form-group" >
 			<%= f.label :category %>
-<<<<<<< HEAD
-			<% @categories = Category.all.collect { | category | [category.name, category.id] } %>
-			    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, {}, {:multiple => true}) %>
-								<%# f.select :category, options_for_select(@categories,{}, {:multiple => true}), class: "form-control" %>
-
-
-		</div>
-			<%# <div class="form-group">
-			<%# f.label :category %>
-			<%#f.text_field :category, class: "form-control" %>
-	<%#	</div> %>
-=======
 			<%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, {}, {:multiple => true}) %>
 		</div>
 		
@@ -23,7 +11,6 @@
 			<%= link_to "Add category", new_category_path(@category), class: "btn btn-primary" %>
 		</div>
 
->>>>>>> 0766c9b716f919946dab82dee24ca009e14c16be
 		<div class="form-group">
 			<%= f.label :name %>
 			<%= f.text_field :name, class: "form-control" %>
