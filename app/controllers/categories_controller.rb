@@ -1,12 +1,18 @@
 class CategoriesController < ApplicationController
     # check that user is logged in before creating a category
+    before_action :find_user, only:[:create]
     before_action :find_category, only:[:show]
 
     def show
     end
 
     def new
-        @category = Category.new
+        if @logged_user
+            @category = Category.new
+        else
+            flash[:error] = "Must be logged in to create new category"
+            redirect_to root_path
+        end
     end
     
     def create
