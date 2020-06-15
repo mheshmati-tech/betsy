@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   patch "/orders/:id/place_order", to: "orders#place_order", as: "place_order"
   patch "orders/:id/cancel", to: "orders#cancel_order", as: "cancel_order"
   get "/orders/:id/confirmation", to: "orders#confirmation", as: "confirm_order"
+  resources :orders, only: [:new, :show, :edit]
+  resources :order_items, only: [:destroy]
+  
+  resources :categories, only: [:show, :new, :create]
+
+
 
   resources :order_items, only: [:update, :destroy]
 end

@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
+  # before_action to check that user is logged in before they create a product
 
   def index
     @products = Product.all
@@ -66,7 +67,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock)
-    #TODO - category - add to params
+    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, :user_id, category_ids: [])
   end
 end

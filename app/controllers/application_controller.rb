@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :find_user, :find_order
+    before_action :find_user, :find_order, :find_categories
 
     def find_user
         if session[:user_id]
@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
         else
             @current_order = nil
         end
+    end
+
+    def find_categories
+        @categories = Category.all
     end
 
 end
