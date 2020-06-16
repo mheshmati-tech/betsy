@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   get "/myaccount", to: "users#myaccount", as: "myaccount"
+  get "/myaccount/orders", to: "users#myorders", as: "myorders"
+
   resources :products do
     resources :order_items, only: [:create]
   end
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
   patch "/orders/:id/place_order", to: "orders#place_order", as: "place_order"
   patch "orders/:id/cancel", to: "orders#cancel_order", as: "cancel_order"
   get "/orders/:id/confirmation", to: "orders#confirmation", as: "confirm_order"
-patch "/prodcuts/:id/change_product_status", to: "products#change_product_status", as: "change_product_status"
+  patch "/prodcuts/:id/change_product_status", to: "products#change_product_status", as: "change_product_status"
   resources :orders, only: [:new, :show, :edit]
   resources :order_items, only: [:destroy]
   

@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   # before_action to check that user is logged in before they create a product
 
   def index
-    @products = Product.all
+    @products = Product.where(product_status: "active")
   end
 
   def show
@@ -53,6 +53,8 @@ class ProductsController < ApplicationController
     end
   end
 
+
+  #TODO: do we even need this?
   def destroy
     if @product.destroy
       flash[:success] = "#{@product.name} successfully deleted"

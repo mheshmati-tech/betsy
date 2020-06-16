@@ -1,7 +1,11 @@
 <h1><%=@logged_user.name%></h1>
 <h2>Date Joined: <%=@logged_user.created_at.strftime("%B %d, %Y")%></h2>
 <main>
-	<h2>List of Order Items</h2>
+	<%= link_to("Add Product", new_product_path) %>
+	<%= link_to("Add Category", new_category_path) %>
+	<%= link_to("Manage Orders", myorders_path) %>
+
+	<h2>List of Products</h2>
 	<section class="order-items-table">
 		<table class="table">
 			<thead>
