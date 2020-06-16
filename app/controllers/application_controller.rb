@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
-    before_action :find_user, :find_order, :find_categories
+    before_action :find_user, :find_order, :find_categories, :find_users
+
+    def find_users
+        @users = User.all
+    end
 
     def find_user
         if session[:user_id]

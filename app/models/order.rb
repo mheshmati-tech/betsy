@@ -18,8 +18,20 @@ class Order < ApplicationRecord
   has_many :order_items
 
   def calculate_order_total
-    order_items = OrderItem.where(order_id: self.id)
     return order_items.map { |order_item| order_item.calculate_total }.sum
   end
 
+  def set_status_of_order_items_to_paid
+    order_items.each do |order_item|
+      order_item.order_item_status = "paid"
+      order_item.save
+    end
+  end
+
+  def set_status_of_order_to_complete_if_order_items_are_shipped
+    if order_items.all? { |order_item| order_item.order_item_status == "shipped" }
+      self.order_status = "complete"
+      self.save
+    end
+  end
 end

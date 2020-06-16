@@ -18,5 +18,11 @@ class Product < ApplicationRecord
     
     return (total_rating / length).round(1)
   end
+
+  after_initialize :set_defaults
+  
+  def set_defaults
+    self.product_status ||= "active"
+  end
   
 end

@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :destroy, :change_product_status]
   # before_action to check that user is logged in before they create a product
 
   def index
-    @products = Product.all
+    @products = Product.where(product_status: "active")
   end
 
   def show
@@ -17,6 +17,11 @@ class ProductsController < ApplicationController
     @product = Product.new(
       product_params
     )
+    if !@logged_user
+      flash[:error] = "You must be logged in to create a new product."
+      redirect_to root_path
+      return
+    end
     @product.user_id = @logged_user.id
     if @product.save
       flash[:success] = "#{@product.name} successfully added!"
@@ -48,12 +53,25 @@ class ProductsController < ApplicationController
     end
   end
 
+
+  #TODO: do we even need this?
   def destroy
     if @product.destroy
       flash[:success] = "#{@product.name} successfully deleted"
       redirect_to root_path
       # TODO - what happens to a products associated data?
     end
+  end
+
+  def change_product_status
+    if @product.product_status == "active"
+      @product.product_status = "inactive"
+    elsif @product.product_status == "inactive"
+      @product.product_status = "active"
+    end
+    @product.save
+    redirect_to myaccount_path
+    return
   end
 
   private
@@ -67,6 +85,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, :user_id, category_ids: [])
+    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, :user_id, :product_status, category_ids: [])
   end
 end
