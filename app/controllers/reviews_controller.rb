@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
 
-    before_action :find_review, only:[:show]
+    before_action :find_review, only:[:show, :edit, :update, :destroy]
+    before_action :find_product
+    before_action :is_merchant, except:[:show]
+    # TODO: restrict edit, update and destroy to logged user that created original review? Review will need user_id
 
     def show
     end
@@ -10,10 +13,11 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @review = Review.create(review_params)
+        @review = Review.new(review_params)
+        @review.product_id = @product.id
 
         if @review.save
-            flash[:sucess] = "Successfully created review"
+            flash[:success] = "Successfully created review"
             redirect_to root_path
             return
         else
@@ -24,15 +28,11 @@ class ReviewsController < ApplicationController
     end
 
     def edit
-        if @review.nil?
-            head :not_found
-            return
-          end
     end
 
     def update
         if @review.update(review_params)
-            flash[:success] = "review successfully edited"
+            flash[:success] = "Review successfully edited"
             redirect_to root_path
             return
         else
@@ -46,12 +46,12 @@ class ReviewsController < ApplicationController
         if @review.nil?
             head :not_found
             return
-          end
-      
-          @review.destroy
-      
-          redirect_to root_path
-          return
+        end
+
+        @review.destroy
+        flash[:success] = "Review successfully deleted"
+        redirect_to root_path
+        return
     end
 
     private
@@ -64,7 +64,22 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def find_product
+        @product = Product.find_by(id: params[:product_id])
+        if @product.nil?
+            head :not_found
+            return
+        end
+    end
+
+    def is_merchant
+        if @product.user.id == session[:user_id]
+            flash[:error] = "Users cannot review their own product"
+            redirect_to root_path
+        end
+    end
+
     def review_params
-        return params.require(:review).permit(:rating, :text, product_ids: [])
+        return params.require(:review).permit(:rating, :text)
     end
 end
