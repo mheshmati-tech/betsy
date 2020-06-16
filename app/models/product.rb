@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-  #TODO product belongs to a user
   belongs_to :user
   has_many :order_items
   has_and_belongs_to_many :categories

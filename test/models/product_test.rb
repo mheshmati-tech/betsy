@@ -51,4 +51,11 @@ describe Product do
       expect(@collar.errors.messages).must_include :price
    end
   end
+
+  describe "relations" do
+    it "has a user" do
+      product = products(:collar)
+      expect(product.user_id).must_equal products(:collar).user_id
+    end
+  end
 end
