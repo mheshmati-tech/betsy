@@ -4,6 +4,7 @@ leash:
   stock: 10
   description: small blue leash
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
+  user_id: 1
 
 collar: 
   name: collar
@@ -11,3 +12,4 @@ collar:
   stock: 1
   description: small blue collar
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
+  user_id: 2

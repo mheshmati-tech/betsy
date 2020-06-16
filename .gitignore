@@ -39,3 +39,6 @@ yarn-debug.log*
 /.env
 
 /package-lock.json
+
+
+coverage

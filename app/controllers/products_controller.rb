@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy, :change_product_status]
-  # before_action to check that user is logged in before they create a product
+  before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.where(product_status: "active")
@@ -26,11 +25,10 @@ class ProductsController < ApplicationController
     if @product.save
       flash[:success] = "#{@product.name} successfully added!"
       redirect_to products_path
-      # TODO - we want to redirect to users products
       return
     else
       flash.now[:error] = "Unable to add #{@product.name}. Errors: #{@product.errors.messages}"
-      render :new
+      render :new, status: :bad_request
       return
     end
   end
@@ -44,7 +42,6 @@ class ProductsController < ApplicationController
     )
       flash[:success] = "#{@product.name} successfully edited"
       redirect_to products_path
-      # TODO - we want to redirect to users products
       return
     else
       flash.now[:error] = "Unable to edit #{@product.name}. Errors: #{@product.errors.messages}"
@@ -79,10 +76,11 @@ class ProductsController < ApplicationController
   def find_product
     @product = Product.find_by(id: params[:id])
     if @product.nil?
-      redirect_to root_path #TODO - what is the best thing to do when prodcut is not found
+      redirect_to root_path 
       return
     end
   end
+
 
   def product_params
     return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, :user_id, :product_status, category_ids: [])
