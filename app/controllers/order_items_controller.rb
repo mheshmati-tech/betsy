@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :find_order_item, only: [:update, :destroy]
+  before_action :find_order_item, only: [:update, :destroy, :change_order_item_status]
 
   def create
     # product = Product.find_by(id: params[:product_id])
@@ -61,6 +61,14 @@ class OrderItemsController < ApplicationController
   def destroy
     @order_item.destroy
     redirect_to order_path(@current_order.id)
+  end
+
+  def change_order_item_status
+    @order_item.order_item_status = "shipped"
+    @order_item.save
+    @order_item.order.set_status_of_order_to_complete_if_order_items_are_shipped
+    redirect_to myorders_path
+    return  
   end
 
   private

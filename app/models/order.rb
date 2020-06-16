@@ -28,4 +28,10 @@ class Order < ApplicationRecord
     end
   end
 
+  def set_status_of_order_to_complete_if_order_items_are_shipped
+    if order_items.all? { |order_item| order_item.order_item_status == "shipped" }
+      self.order_status = "complete"
+      self.save
+    end
+  end
 end

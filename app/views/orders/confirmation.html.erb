@@ -8,6 +8,7 @@
 					<th>Product Name</th>
 					<th>Quantity</th>
 					<th>Item Total</th>
+					<th>Order Item Status</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -17,6 +18,8 @@
 						<td><%= link_to(product.name, product_path(product.id)) %></td>
 						<td> <%= order_item.quantity %> </td>
 						<td> <%= order_item.calculate_total %> </td>
+						<td> <%= order_item.order_item_status %> </td>
+
 					</tr>
 				<% end %>
 			</tbody>

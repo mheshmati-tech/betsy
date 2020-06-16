@@ -25,7 +25,13 @@
           	<td><%= order_item.order.order_status %></td>
 						<td><%= order_item.product.price %></td>
 						<td><%= order_item.calculate_total %></td>
-						<td>TODO: Shipped button</td>
+						<td>
+							<% if order_item.order_item_status == "shipped" %>
+								shipped
+							<%else%>
+								<%= link_to("Ship Order Item", change_order_item_status_path(order_item.id), method: :patch, class: "btn btn-primary" ) %>
+							<%end%>
+						</td>
 					</tr>
 				<% end %>
 			</tbody>
