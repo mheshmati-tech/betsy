@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :destroy, :change_product_status]
   # before_action to check that user is logged in before they create a product
 
   def index
@@ -59,6 +59,17 @@ class ProductsController < ApplicationController
       redirect_to root_path
       # TODO - what happens to a products associated data?
     end
+  end
+
+  def change_product_status
+    if @product.product_status == "active"
+      @product.product_status = "inactive"
+    elsif @product.product_status == "inactive"
+      @product.product_status = "active"
+    end
+    @product.save
+    redirect_to myaccount_path
+    return
   end
 
   private

@@ -44,7 +44,8 @@ class UsersController < ApplicationController
 
   def myaccount
     if @logged_user
-      @order_items = OrderItem.all.select{ |order_item| order_item.product.user_id == logged_user.id}
+      # @order_items = OrderItem.all.select{ |order_item| order_item.product.user_id == @logged_user.id}
+      @products = Product.where(user_id: @logged_user.id)
     else
       flash[:error] = "You must be logged in to see this page"
       return redirect_to root_path

@@ -73,6 +73,7 @@ class OrdersController < ApplicationController
       end
 
       @current_order.order_status = "paid"
+      @current_order.set_status_of_order_items_to_paid
       @current_order.save
       session[:order_id] = nil
       redirect_to confirm_order_path
