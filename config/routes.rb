@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: "homepages#index"
 
   resources :users, only: [:index, :show]
+  get "/myaccount", to: "users#myaccount", as: "myaccount"
   resources :products do
     resources :order_items, only: [:create]
   end

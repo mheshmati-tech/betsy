@@ -17,6 +17,11 @@ class ProductsController < ApplicationController
     @product = Product.new(
       product_params
     )
+    if !@logged_user
+      flash[:error] = "You must be logged in to create a new product."
+      redirect_to root_path
+      return
+    end
     @product.user_id = @logged_user.id
     if @product.save
       flash[:success] = "#{@product.name} successfully added!"
@@ -67,6 +72,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, :user_id, category_ids: [])
+    return params.require(:product).permit(:name, :price, :description, :photo_url, :stock, :user_id, :product_status, category_ids: [])
   end
 end

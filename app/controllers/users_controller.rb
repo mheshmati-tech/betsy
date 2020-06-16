@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    # @users = User.all
   end
 
   def show
@@ -40,6 +40,15 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     flash[:success] = "Successfully logged out!"
     redirect_to root_path
+  end
+
+  def myaccount
+    if @logged_user
+      @order_items = OrderItem.all.select{ |order_item| order_item.product.user_id == logged_user.id}
+    else
+      flash[:error] = "You must be logged in to see this page"
+      return redirect_to root_path
+    end
   end
 
 end
