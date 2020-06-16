@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     @product = Product.new(
       product_params
     )
-    @product.user_id = @logged_user.id
+    @product.user_id = @logged_user
     if @product.save
       flash[:success] = "#{@product.name} successfully added!"
       redirect_to products_path
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
       return
     else
       flash.now[:error] = "Unable to add #{@product.name}. Errors: #{@product.errors.messages}"
-      render :new
+      render :new, status: :bad_request
       return
     end
   end
