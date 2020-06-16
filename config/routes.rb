@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :products do
     resources :order_items, only: [:create]
+    resources :reviews, except: [:index]
   end
   resources :orders, only: [:new, :show, :edit, :update]
   get "/orders/:id/finalize", to: "orders#finalize", as: "finalize_order"
@@ -21,8 +22,6 @@ Rails.application.routes.draw do
   resources :order_items, only: [:destroy]
   
   resources :categories, only: [:show, :new, :create]
-
-
 
   resources :order_items, only: [:update, :destroy]
 end
