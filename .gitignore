@@ -40,6 +40,5 @@ yarn-debug.log*
 
 /package-lock.json
 
-# Ignore simpleCov coverage results
-echo "coverage" >> .gitignore
 
+coverage
