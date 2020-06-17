@@ -6,7 +6,6 @@ puts "Loading raw driver data from #{USERS_FILE}"
 user_failures = []
 CSV.foreach(USERS_FILE, :headers => true) do |row|
   user = User.new
-  user.id = row['id']
   user.name = row['name']
   user.email = row['email'] # name,email,uid,provider
   user.uid = row['uid']
@@ -81,6 +80,8 @@ puts "#{order_failures.length} orders failed to save"
 PRODUCTS_FILE = Rails.root.join('db', 'seed_data', 'products.csv')
 puts "Loading new products data from #{PRODUCTS_FILE}"
 
+USERS_NAMES = ["Grace Hopper","Ada Lovelace","Susan Wojcicki","Sheryl Sandberg","Hedy Lamarr","Radia Perlman","Mary Keller","Katherine Johnson","Manal Sharif","Jasmine Anteunis"]
+
 product_failures = []
 CSV.foreach(PRODUCTS_FILE, :headers => true) do |row|
   product = Product.new
@@ -90,7 +91,8 @@ CSV.foreach(PRODUCTS_FILE, :headers => true) do |row|
   product.description = row['description']
   product.photo_url = row['photo_url']
   product.stock = row['stock']
-  product.user_id = row['user_id']
+  rand_user = USERS_NAMES[rand(0..9)]
+  product.user = User.find_by(name: rand_user)
   product.product_status = row['product_status']
   successful = product.save
   if !successful

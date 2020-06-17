@@ -1,11 +1,11 @@
-id,name,email,uid,provider
-1,Grace Hopper,gracehopper@usnavy.com,1234,github
-2,Ada Lovelace,lovelace@ada.com,4321,github
-3,Susan Wojcicki,swojcicki@domain.com,5678,github
-4,Sheryl Sandberg,ssandberg@facebook.com,8765,github
-5,Hedy Lamarr,hlamarr@wireless.com,9012,github
-6,Radia Perlman,ethernetmom@internet.com,2109,github
-7,Mary Keller,sistermkk@cs.com,3243,github
-8,Katherine Johnson, kjohnson@usspaceprogram.com,3432,github
-9,Manal Sharif, msharif@advocacy.com,5465,github
-10,Jasmine Anteunis,janteunis@ai.com,5645,github
+name,email,uid,provider
+Grace Hopper,gracehopper@usnavy.com,1234,github
+Ada Lovelace,lovelace@ada.com,4321,github
+Susan Wojcicki,swojcicki@domain.com,5678,github
+Sheryl Sandberg,ssandberg@facebook.com,8765,github
+Hedy Lamarr,hlamarr@wireless.com,9012,github
+Radia Perlman,ethernetmom@internet.com,2109,github
+Mary Keller,sistermkk@cs.com,3243,github
+Katherine Johnson, kjohnson@usspaceprogram.com,3432,github
+Manal Sharif, msharif@advocacy.com,5465,github
+Jasmine Anteunis,janteunis@ai.com,5645,github
