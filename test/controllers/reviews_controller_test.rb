@@ -48,13 +48,23 @@ describe ReviewsController do
           product: @toy
         }
       }
-      expect { post product_reviews_path(product_id: @toy.id), params: invalid_hash }.wont_change "Review.count" # no product
+      expect { post product_reviews_path(product_id: @toy.id), params: invalid_hash }.wont_change "Review.count"
 
-      must_respond_with :redirect # test error: getting 200 OK instead of 3XX redirect
+      must_respond_with :bad_request
     end
 
     it "does not allow users to review their own products" do
       perform_login(users(:grace))
+      valid_hash = {
+        review: {
+          rating: 5,
+          text: "the best",
+          product: @toy
+        }
+      }
+      expect { post product_reviews_path(product_id: @toy.id), params: valid_hash  }.wont_change "Review.count"
+      expect(flash[:error]).must_include "Users cannot review their own product"
+      must_redirect_to product_path(id: @toy.id)
       
     end
 

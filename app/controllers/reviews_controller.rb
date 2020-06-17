@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
             return
         else
             flash.now[:error] = "Could not save review. Errors: #{@review.errors.messages}"
-            render :new
+            render :new, status: :bad_request
             return
         end
     end
@@ -75,7 +75,7 @@ class ReviewsController < ApplicationController
     def is_merchant
         if @product.user.id == session[:user_id]
             flash[:error] = "Users cannot review their own product"
-            redirect_to root_path
+            redirect_to product_path(params[:product_id])
         end
     end
 
