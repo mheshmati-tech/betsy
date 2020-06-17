@@ -29,7 +29,6 @@ puts "Loading raw driver data from #{CATEGORIES_FILE}"
 category_failures = []
 CSV.foreach(CATEGORIES_FILE, :headers => true) do |row|
   category = Category.new
-  category.id = row['id']
   category.name = row['name']
   
   successful = category.save
@@ -54,7 +53,6 @@ puts "Loading raw driver data from #{ORDERS_FILE}"
 order_failures = []
 CSV.foreach(ORDERS_FILE, :headers => true) do |row|
   order = Order.new
-  order.id = row['id']
   order.order_status = row['order_status']
   order.email_address = row['email_address']
   order.mailing_address = row['mailing_address']
@@ -85,7 +83,6 @@ USERS_NAMES = ["Grace Hopper","Ada Lovelace","Susan Wojcicki","Sheryl Sandberg",
 product_failures = []
 CSV.foreach(PRODUCTS_FILE, :headers => true) do |row|
   product = Product.new
-  product.id = row['id']
   product.name = row['name']
   product.price = row['price']
   product.description = row['description']
@@ -113,7 +110,6 @@ puts "Loading raw order_item data from #{ORDER_ITEMS_FILE}"
 order_item_failures = []
 CSV.foreach(ORDER_ITEMS_FILE, :headers => true) do |row|
   order_item = OrderItem.new
-  order_item.id = row['id']
   order_item.quantity = row['quantity']
   order_item.order_id = row['order_id']
   order_item.product_id = row['product_id']
@@ -141,7 +137,6 @@ puts "Loading raw driver data from #{REVIEWS_FILE}"
 review_failures = []
 CSV.foreach(REVIEWS_FILE, :headers => true) do |row|
   review = Review.new
-  review.id = row['id'] # id,rating,text,product_id
   review.rating = row['rating']
   review.text = row['text']
   review.product_id = row['product_id']
