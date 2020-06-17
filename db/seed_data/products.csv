@@ -1,11 +1,11 @@
-id,name,price,description,photo_url,stock,user_id,product_status
-1,squeaky toy,12.99,fun to chew on,https://cdn.cheapism.com/images/082316_best_cheap_dog_chew_toys_slide_6_fs.max-420x243.jpg,10,8,active
-2,dog harness,29.99,cute and soft,https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFHbqwQi_ZQ2HJk1utjyj_g2rk86hEMPbMHx266eN-dzJMW0lG&usqp=CAU,10,8,active
-3,leash,20.99,leash for fun walks,https://dogperday.com/wp-content/uploads/2016/03/dpd1-3.jpg,10,2,active
-4,olaf themed leash,30.99,olaf and dogs garantees a walk full of cuteness,https://www.yourwdwstore.net/assets/images/7/70000/2000/900/72997.jpg,10,1,active
-5,multicolor mesh cat bath bag,24.99,bath time!,https://cdn.shopify.com/s/files/1/0075/1330/9266/products/product-image-734494068.jpg?v=1579820700,8,4,active
-6,cat palace,89.99,a palace for your spoiled cat,https://m.songmics.com/cache/image/Product/UPCT18W/Large-Size-Cat-Tree-UPCT18W-3-500.jpg,10,6,active
-7,dragon fruit hat,29.99,a dreagon fruit hat for your cat yum,https://cdn.shopify.com/s/files/1/2408/6395/products/product-image-1016595803_2048x.jpg?v=1571321864,10,7,active
-8,dog water bottle,10.99,portable and easy dog water bottle,https://ae01.alicdn.com/kf/HTB19YRhKx1YBuNjy1zcq6zNcXXaF/Stylish-550ml-Portable-Dog-Water-Bottle-Outdoor-Drinking-Bowls-For-Dogs-Cats-Puppy-Travel-Feeder-Cup.jpg,10,6,inactive
-9,ups custome for your dog,30.99,don't wait any longer anticipating when the ups guy will deliever your packages,https://images-na.ssl-images-amazon.com/images/I/81PgQdpp13L._AC_SL1500_.jpg,10,2,active
-10,harry potter dog custom,29.99,now you can have your pet to be part of the hogwarts,https://hgtvhome.sndimg.com/content/dam/images/hgtv/products/2019/10/7/rx_amazon-dog-costumewizard-dog-costume.jpeg.rend.hgtvcom.966.966.suffix/1570470965458.jpeg,10,5,active
+name,price,description,photo_url,stock,user_id,product_status
+squeaky toy,12.99,fun to chew on,https://cdn.cheapism.com/images/082316_best_cheap_dog_chew_toys_slide_6_fs.max-420x243.jpg,10,8,active
+dog harness,29.99,cute and soft,https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFHbqwQi_ZQ2HJk1utjyj_g2rk86hEMPbMHx266eN-dzJMW0lG&usqp=CAU,10,8,active
+leash,20.99,leash for fun walks,https://dogperday.com/wp-content/uploads/2016/03/dpd1-3.jpg,10,2,active
+olaf themed leash,30.99,olaf and dogs garantees a walk full of cuteness,https://www.yourwdwstore.net/assets/images/7/70000/2000/900/72997.jpg,10,1,active
+multicolor mesh cat bath bag,24.99,bath time!,https://cdn.shopify.com/s/files/1/0075/1330/9266/products/product-image-734494068.jpg?v=1579820700,8,4,active
+cat palace,89.99,a palace for your spoiled cat,https://m.songmics.com/cache/image/Product/UPCT18W/Large-Size-Cat-Tree-UPCT18W-3-500.jpg,10,6,active
+dragon fruit hat,29.99,a dreagon fruit hat for your cat yum,https://cdn.shopify.com/s/files/1/2408/6395/products/product-image-1016595803_2048x.jpg?v=1571321864,10,7,active
+dog water bottle,10.99,portable and easy dog water bottle,https://ae01.alicdn.com/kf/HTB19YRhKx1YBuNjy1zcq6zNcXXaF/Stylish-550ml-Portable-Dog-Water-Bottle-Outdoor-Drinking-Bowls-For-Dogs-Cats-Puppy-Travel-Feeder-Cup.jpg,10,6,inactive
+ups custome for your dog,30.99,don't wait any longer anticipating when the ups guy will deliever your packages,https://images-na.ssl-images-amazon.com/images/I/81PgQdpp13L._AC_SL1500_.jpg,10,2,active
+harry potter dog custom,29.99,now you can have your pet to be part of the hogwarts,https://hgtvhome.sndimg.com/content/dam/images/hgtv/products/2019/10/7/rx_amazon-dog-costumewizard-dog-costume.jpeg.rend.hgtvcom.966.966.suffix/1570470965458.jpeg,10,5,active
