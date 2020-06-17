@@ -4,6 +4,8 @@
         <p>  <%= @product.description %> </p>
         <p> $ <%= @product.price%> </p>
         <p> <%= @product.stock %> </p>
+        <p> Status: <%= @product.product_status %> </p>
+
         <%= image_tag @product.photo_url, alt: "products packaging appearance" %>
 	</section>
 

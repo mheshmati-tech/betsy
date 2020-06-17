@@ -10,22 +10,35 @@
 	<body>
 		<header class="app-header">
 			<nav class="app-header__nav">
-			<a class="navbar-brand" href="<%= root_path %>">p3tsy</a>
+				<a class="navbar-brand" href="<%= root_path %>">p3tsy</a>
 				<ul class="nav app-header__site-nav-container">
 					<li class="nav-item dropdown">
-            			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Browse by Category
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              				<% @categories.each do |category| %>
-              					<a class="dropdown-item" href="<%= category_path(category.id) %>"><%= "#{category.name}" %></a>
-              				<% end %>
-            			</div>
+							<% @categories.each do |category| %>
+								<a class="dropdown-item" href="<%= category_path(category.id) %>"><%= "#{category.name}" %></a>
+							<% end %>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Browse by Merchant
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<% @users.each do |user| %>
+								<a class="dropdown-item" href="<%= user_path(user.id) %>"><%= "#{user.name}" %></a>
+							<% end %>
+						</div>
 					</li>
 					<li class="nav-item app-header__nav_item">
 						<%= link_to "View All Products", products_path, class: "btn btn-primary" %>
 					</li>
 					<% if @logged_user %>
+						<li class="nav-item app-header__nav_item">
+							<%= link_to "My Account", myaccount_path, class: "btn btn-primary" %>
+						</li>
 						<li class="nav-item app-header__nav_item">
 							<%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>
 						</li>

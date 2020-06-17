@@ -27,6 +27,10 @@ class OrdersController < ApplicationController
       redirect_to finalize_order_path
       # TODO - we want to redirect to reciept page (order with status paid/completed)
       return
+    else
+      flash[:error] = "#{@current_order.errors.messages}"
+      redirect_to root_path
+      return
     end
   end
 
@@ -69,6 +73,7 @@ class OrdersController < ApplicationController
       end
 
       @current_order.order_status = "paid"
+      @current_order.set_status_of_order_items_to_paid
       @current_order.save
       session[:order_id] = nil
       redirect_to confirm_order_path

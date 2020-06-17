@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-  #TODO product belongs to a user
   belongs_to :user
   has_many :order_items
   has_many :reviews
@@ -17,6 +16,12 @@ class Product < ApplicationRecord
     total_rating = self.reviews.sum { |review| review.rating }
     
     return (total_rating / length).round(1)
+  end
+
+  after_initialize :set_defaults
+  
+  def set_defaults
+    self.product_status ||= "active"
   end
   
 end
