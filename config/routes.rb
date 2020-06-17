@@ -9,20 +9,29 @@ Rails.application.routes.draw do
   root to: "homepages#index"
 
   resources :users, only: [:index, :show]
+  get "/myaccount", to: "users#myaccount", as: "myaccount"
+  get "/myaccount/orders", to: "users#myorders", as: "myorders"
+
   resources :products do
     resources :order_items, only: [:create]
+    resources :reviews, except: [:index]
   end
+
   resources :orders, only: [:new, :show, :edit, :update]
   get "/orders/:id/finalize", to: "orders#finalize", as: "finalize_order"
   patch "/orders/:id/place_order", to: "orders#place_order", as: "place_order"
   patch "orders/:id/cancel", to: "orders#cancel_order", as: "cancel_order"
   get "/orders/:id/confirmation", to: "orders#confirmation", as: "confirm_order"
+  
+  patch "/prodcuts/:id/change_product_status", to: "products#change_product_status", as: "change_product_status"
+
+  patch "/order_items/:id/change_order_item_status", to: "order_items#change_order_item_status", as: "change_order_item_status"
+
+
   resources :orders, only: [:new, :show, :edit]
   resources :order_items, only: [:destroy]
   
   resources :categories, only: [:show, :new, :create]
-
-
 
   resources :order_items, only: [:update, :destroy]
 end
