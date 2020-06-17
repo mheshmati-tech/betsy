@@ -1,5 +1,9 @@
 <h1>Order fulfillment for Merchant: <%=@logged_user.name%> Orders</h1>
 <main>
+<p><strong>Total Revenue:</strong> <%=@logged_user.total_revenue%></p>
+<p><strong>Paid Order Items Total Revenue:</strong> <%=@logged_user.filtered_revenue("paid")%> (from <%=@logged_user.filtered_num_orders("paid")%> order items)</p>
+<p><strong>Shipped Order Items Total Revenue:</strong> <%=@logged_user.filtered_revenue("shipped")%> (from <%=@logged_user.filtered_num_orders("shipped")%> order items)</p>
+
 	<h2>List of Order Items</h2>
 	<section class="order-items-table">
 		<table class="table">
@@ -9,7 +13,10 @@
 					<th>Purchase Date</th>
 					<th>Product Name</th>
 					<th>Quanity</th>
-					<th>Order Status</th>
+					<th>
+						Order Status <br>	<%=link_to "all", myorders_path %> <br> <%=link_to "paid", myorders_path(:filter => "paid") %> <br>	<%=link_to "shipped", myorders_path(:filter => "shipped") %>
+						
+					</th>
 					<th>Item Price</th>
 					<th>Item Revenue</th>
 					<th>Shipment Status</th>
