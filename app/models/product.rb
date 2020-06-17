@@ -12,5 +12,9 @@ class Product < ApplicationRecord
   def set_defaults
     self.product_status ||= "active"
   end
+
+  def decrease_inventory(quantity)
+    self.stock -= quantity
+  end
   
 end
