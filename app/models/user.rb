@@ -10,6 +10,26 @@ class User < ApplicationRecord
         return user
     end
 
+    def total_revenue
+        return order_items.map{ |order_item| order_item.calculate_total }.sum
+    end
+
+    def filtered_revenue(status)
+        filtered_order_items = order_items.select{ |order_item| order_item.order_item_status == status }
+        return filtered_order_items.map{ |order_item| order_item.calculate_total }.sum
+    end
+
+    def filtered_num_orders(status)
+        filtered_order_items = order_items.select{ |order_item| order_item.order_item_status == status }
+        return filtered_order_items.count
+    end
+
+    def order_items 
+        return OrderItem.all.select{ |order_item| order_item.product.user_id == id}
+    end
+
+
+
     validates :uid, presence: true, numericality: {only_integer: true}, uniqueness: true
     validates :provider, presence: true
 

@@ -54,6 +54,10 @@ class UsersController < ApplicationController
   def myorders
     if @logged_user
       @order_items = OrderItem.all.select{ |order_item| order_item.product.user_id == @logged_user.id}
+      if params[:filter]
+        @order_items = @order_items.select{ |order_item| order_item.order_item_status == params[:filter] }
+        # @filtered_revenue = @logged_user.total_rev_filtered(params[:filter])
+      end
     else
       flash[:error] = "You must be logged in to see this page"
       return redirect_to root_path
