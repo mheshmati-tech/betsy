@@ -8,7 +8,7 @@
 					<th>Name</th>
 					<th>Email Address</th>
 					<th>Mailing Address</th>
-					<th>Credit Card Number</th>
+					<th>Last 4 Digits of Credit Card Number</th>
 					<th>Expiration Date</th>
 				</tr>
 			</thead>
@@ -17,7 +17,7 @@
 					<td><%= @order.name_on_credit_card %></td>
 					<td><%= @order.email_address %></td>
 					<td><%= @order.mailing_address %></td>
-					<td><%= @order.credit_card_number%></td>
+					<td><%= @order.credit_card_number.last(4) %></td>
 					<td><%= @order.credit_card_expiration %></td>
 				</tr>
 			</tbody>
