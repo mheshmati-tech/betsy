@@ -25,11 +25,11 @@ class OrdersController < ApplicationController
     if @current_order.update(order_params)
       flash[:success] = "Order ##{@current_order.id} successfully updated"
       redirect_to finalize_order_path
-      # TODO - we want to redirect to reciept page (order with status paid/completed)
+
       return
     else
       flash[:error] = "#{@current_order.errors.messages}"
-      redirect_to root_path
+      redirect_to edit_order_path(@current_order.id)
       return
     end
   end
