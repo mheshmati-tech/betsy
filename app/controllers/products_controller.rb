@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :destroy, :change_product_status]
 
   def index
     @products = Product.where(product_status: "active")

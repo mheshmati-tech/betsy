@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   patch "orders/:id/cancel", to: "orders#cancel_order", as: "cancel_order"
   get "/orders/:id/confirmation", to: "orders#confirmation", as: "confirm_order"
   
-  patch "/prodcuts/:id/change_product_status", to: "products#change_product_status", as: "change_product_status"
+  patch "/products/:id/change_product_status", to: "products#change_product_status", as: "change_product_status"
 
   patch "/order_items/:id/change_order_item_status", to: "order_items#change_order_item_status", as: "change_order_item_status"
 
