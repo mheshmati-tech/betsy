@@ -32,7 +32,7 @@ describe ReviewsController do
           product: @toy
         }
       }
-      expect { post product_reviews_path(product_id: @toy.id), params: valid_hash }.must_change "Review.count", 1 # product needs user_id
+      expect { post product_reviews_path(product_id: @toy.id), params: valid_hash }.must_change "Review.count", 1
       expect(Review.last.rating).must_equal valid_hash[:review][:rating]
       expect(Review.last.text).must_equal valid_hash[:review][:text]
       expect(Review.last.product_id).must_equal @toy.id
