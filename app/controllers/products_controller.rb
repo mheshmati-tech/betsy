@@ -60,6 +60,7 @@ class ProductsController < ApplicationController
     end
   end
 
+  
   def change_product_status
     if @product.product_status == "active"
       @product.product_status = "inactive"
@@ -67,7 +68,7 @@ class ProductsController < ApplicationController
       @product.product_status = "active"
     end
     @product.save
-    redirect_to myaccount_path
+    redirect_to root_path
     return
   end
 
