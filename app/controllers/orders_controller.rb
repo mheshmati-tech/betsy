@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
 
       @current_order.order_items.each do |order_item|
         product = Product.find_by(id: order_item.product_id)
-        product.stock -= order_item.quantity
+        product.decrease_inventory(order_item.quantity)
         product.save
       end
 

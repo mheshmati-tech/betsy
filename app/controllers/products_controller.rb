@@ -60,15 +60,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  #TODO: do we even need this?
-  def destroy
-    if @product.destroy
-      flash[:success] = "#{@product.name} successfully deleted"
-      redirect_to root_path
-      # TODO - what happens to a products associated data?
-    end
-  end
-
+  
   def change_product_status
     if @product.product_status == "active"
       @product.product_status = "inactive"
@@ -76,7 +68,7 @@ class ProductsController < ApplicationController
       @product.product_status = "active"
     end
     @product.save
-    redirect_to myaccount_path
+    redirect_to root_path
     return
   end
 
