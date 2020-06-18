@@ -2,7 +2,6 @@ class OrderItemsController < ApplicationController
   before_action :find_order_item, only: [:update, :destroy, :change_order_item_status]
 
   def create
-    # product = Product.find_by(id: params[:product_id])
     order_item = OrderItem.new(quantity: params[:quantity], product_id: params[:product_id])
     if !order_item.is_in_stock
       flash[:error] = "Not enough inventory available."
@@ -10,24 +9,7 @@ class OrderItemsController < ApplicationController
       return
     else
       if @current_order
-        order_item.order_id = session[:order_id]
-        existing_order_item = @current_order.order_items.find_by(product_id: params[:product_id])
-        if existing_order_item
-          new_quantity = existing_order_item.quantity += params[:quantity].to_i
-          if existing_order_item.stock < new_quantity
-            flash[:error] = "Not enough inventory available." 
-            redirect_to product_path(params[:product_id])
-            return
-          end
-          if existing_order_item.save
-            flash[:success] = "order item quantity successfuly updated."
-            redirect_to product_path(params[:product_id])
-          else
-            flash[:error] = "unable to update order item quantity."
-            redirect_to product_path(params[:product_id])
-          end
-          return
-        end
+        existing_order(order_item)
       else
         @current_order = Order.create(order_status: "pending")
         session[:order_id] = @current_order.id
@@ -35,13 +17,30 @@ class OrderItemsController < ApplicationController
       end
     end
 
-    if order_item.save
-      flash[:success] = "order item succesfully created"
-      redirect_to product_path(params[:product_id])
+    save_order(order_item)
+  end
 
+  def existing_order(order_item)
+    order_item.order_id = session[:order_id]
+    existing_order_item = @current_order.order_items.find_by(product_id: params[:product_id])
+    if existing_order_item
+      new_quantity = existing_order_item.quantity += params[:quantity].to_i #checking the new quantity before saving the changes
+      if existing_order_item.stock < new_quantity
+        flash[:error] = "Not enough inventory available."
+        redirect_to product_path(params[:product_id])
+        return
+      end
+      save_order(existing_order_item)
+    end
+  end
+
+  def save_order(order_item)
+    if order_item.save
+      flash[:success] = "Success!"
+      redirect_to product_path(params[:product_id])
       return
     else
-      flash[:error] = "order item NOT succesfully created :( #{order_item.errors.messages}"
+      flash[:error] = "Error! #{order_item.errors.messages}"
       redirect_to product_path(params[:product_id])
       return
     end
@@ -68,7 +67,7 @@ class OrderItemsController < ApplicationController
     @order_item.save
     @order_item.order.set_status_of_order_to_complete_if_order_items_are_shipped
     redirect_to myorders_path
-    return  
+    return
   end
 
   private
@@ -86,12 +85,3 @@ class OrderItemsController < ApplicationController
     end
   end
 end
-
-# {"authenticity_token"=>"j0N6hKMri5Q2Y+AJBLojxdOMlWdbDgil1pNzFXCtImRqrXyyQ6FYkGNapGLJAZkgPrI4+Y93jFkQUtk5Gc4oyw==",
-
-#   "quantity"=>"2",
-#   "commit"=>"Add to Cart",
-
-#   "controller"=>"order_items",
-#   "action"=>"create",
-#   "product_id"=>"1"}

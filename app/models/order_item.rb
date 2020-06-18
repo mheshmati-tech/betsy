@@ -14,11 +14,6 @@ class OrderItem < ApplicationRecord
   end
 
   def is_in_stock
-    if self.quantity <= self.stock
-      return true
-    else
-      return false
-    end
+    return self.quantity <= self.stock
   end
-  
 end
