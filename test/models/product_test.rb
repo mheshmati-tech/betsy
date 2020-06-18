@@ -83,7 +83,7 @@ describe Product do
 
       expect(Product.top_rated(Product.all)).must_include @collar
       end
-      binding.pry
+      # binding.pry
   end
 
   # Review.create(rating: 5, text: "good", product_id: @collar.id)
