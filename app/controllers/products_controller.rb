@@ -50,6 +50,7 @@ class ProductsController < ApplicationController
     if @product.update(
       product_params
     )
+  
       flash[:success] = "#{@product.name} successfully edited"
       redirect_to products_path
       return
