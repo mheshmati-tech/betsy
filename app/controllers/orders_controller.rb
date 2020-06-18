@@ -6,11 +6,11 @@ class OrdersController < ApplicationController
   end
 
 # TODO: is create method necessary??
-  def create
-    if @current_order.nil?
-      @current_order = Order.new
-    end
-  end
+  # def create
+  #   if @current_order.nil?
+  #     @current_order = Order.new
+  #   end
+  # end
 
   def edit
     if @current_order.nil?
