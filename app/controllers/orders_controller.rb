@@ -23,7 +23,10 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @current_order.update(order_params)
+    if @current_order.nil?
+      flash[:error] = "No current order to update"
+      return redirect_to root_path
+    elsif @current_order.update(order_params)
       flash[:success] = "Order ##{@current_order.id} successfully updated"
       redirect_to finalize_order_path
 
@@ -41,6 +44,7 @@ class OrdersController < ApplicationController
       @current_order.save
       session[:order_id] = nil
       flash[:succes] = "Order succesfully cancelled"
+      # binding.pry
       redirect_to root_path
       return
     end

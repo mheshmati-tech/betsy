@@ -24,9 +24,6 @@ describe OrdersController do
   end
 
   describe "update" do
-    before do
-      @order = create_order(@product,1)
-    end
 
     let (:new_order_hash) {
       {
@@ -42,6 +39,8 @@ describe OrdersController do
       }
     }
     it "will update a model with a valid post request" do
+      @order = create_order(@product,1)
+
       expect {
         patch order_path(@order.id), params: new_order_hash
       }.wont_change "Order.count"
@@ -59,19 +58,58 @@ describe OrdersController do
 
     end
   
-    # it "will respond with not_found for invalid ids" do
-    #   id = -1
+    it "will redirect to root path if no current order is" do
   
-    #   expect {
-    #     patch book_path(id), params: new_book_hash
-    #   }.wont_change "Book.count"
+      expect {
+        patch order_path(-1), params: new_order_hash
+      }.wont_change "Order.count"
   
-    #   must_respond_with :not_found
-    # end
+      must_redirect_to root_path
+    end
   
-    # it "will not update if the params are invalid" do
-    #   # This test will be examined when we cover validations next week
-    # end
+    it "will not update if the params are invalid" do
+      @order = create_order(@product,1)
+      new_order_hash[:order][:credit_card_number] = nil
+
+      expect {
+        patch order_path(@order), params: new_order_hash
+      }.wont_change "Order.count"
+  
+      must_redirect_to edit_order_path(@order.id)
+    end
+  end
+
+  describe "cancel order" do
+    let (:new_order_hash) {
+      {
+        order: {
+          email_address: "louie@hotmail.com",
+          mailing_address: "52 Center St.",
+          name_on_credit_card: "Louie",
+          credit_card_number: "4321432143214321",
+          credit_card_expiration: "03/22",
+          credit_card_CVV: "321",
+          billing_zip_code: "12321"
+        },
+      }
+    }
+    it "will change order status to cancelled and clear session order id" do
+      order_id = create_order(@product,1).id
+      puts order_id
+      patch order_path(order_id), params: new_order_hash
+
+      patch cancel_order_path(order_id)
+
+      reloaded_order = Order.find_by(id:order_id)
+      expect(reloaded_order.order_status).must_equal "cancelled"
+
+      session[:order_id].must_equal nil
+      must_redirect_to root_path
+    end
+
+    it "will respond with not_found if no current order set" do
+      assert_raises( "NoMethodError") { get order_path(-1) }
+    end
   end
 
 end
