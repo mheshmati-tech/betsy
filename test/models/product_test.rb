@@ -50,12 +50,23 @@ describe Product do
       expect(@collar.valid?).must_equal false
       expect(@collar.errors.messages).must_include :price
    end
-  end
 
-  describe "relations" do
-    it "has a user" do
+    describe "relations" do
+      it "has a user" do
       product = products(:collar)
       expect(product.user_id).must_equal products(:collar).user_id
+      end
+    end
+
+    describe "average_rating" do
+
+      it 'calculates average rating' do
+        Review.create(rating: 5, text: "good", product_id: @collar.id)
+        Review.create(rating: 2, text: "poor", product_id: @collar.id)
+        Review.create(rating: 5, text: "excellent", product_id: @collar.id)
+
+      expect(@collar.average_rating).must_equal 4
+      end
     end
   end
 end
