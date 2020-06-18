@@ -76,8 +76,7 @@ describe Product do
   end
 
   # Review.create(rating: 5, text: "good", product_id: @collar.id)
-  # Review.create(rating: 2, text: "poor", product_id: @collar.id)
-  # Review.create(rating: 5, text: "excellent", product_id: @collar.id)
+
 
 
 
