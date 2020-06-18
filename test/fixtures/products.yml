@@ -5,8 +5,7 @@ collar:
   description: small blue collar
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
   user_id: 2
-  product_status: inactive
- 
+  product_status: active
 
 leash: 
   name: leash
