@@ -69,4 +69,29 @@ describe Product do
       end
     end
   end
+
+  describe "spotlight" do
+    it "gets the newest product" do
+      expect(Product.spotlight(Product.all)).must_equal Product.last
+      end
+  end
+
+  describe "top rated" do
+  
+    it "gets highest rated products" do
+      Review.create(rating: 5, text: "good", product_id: @collar.id)
+
+      expect(Product.top_rated(Product.all)).must_include @collar
+      end
+      binding.pry
+  end
+
+  # Review.create(rating: 5, text: "good", product_id: @collar.id)
+
+
+
+
+
+
+
 end

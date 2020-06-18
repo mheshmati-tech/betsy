@@ -14,4 +14,39 @@ collar:
   description: small blue collar
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
   user_id: 2
-  product_status: inactive
+
+
+doghouse: 
+  name: doghouse
+  price: 15.00
+  stock: 1
+  description: small blue doghouse
+  photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
+  user_id: 3
+
+
+bowl: 
+  name: bowl
+  price: 15.00
+  stock: 1
+  description: small blue bowl
+  photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
+  user_id: 4
+
+
+bones: 
+  name: bones
+  price: 15.00
+  stock: 1
+  description: small blue bones
+  photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
+  user_id: 5
+
+
+dish: 
+  name: dish
+  price: 15.00
+  stock: 1
+  description: small blue dish
+  photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
+  user_id: 6
