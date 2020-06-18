@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "/myaccount", to: "users#myaccount", as: "myaccount"
   get "/myaccount/orders", to: "users#myorders", as: "myorders"
 
-  resources :products do
+  resources :products, except: [:destroy] do
     resources :order_items, only: [:create]
     resources :reviews, except: [:index]
   end

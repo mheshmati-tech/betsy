@@ -1,6 +1,29 @@
 <h2>Here is your order summary:</h2>
 <main>
 	<section class="order-table">
+		<h2>User's Summary</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email Address</th>
+					<th>Mailing Address</th>
+					<th>Last 4 Digits of Credit Card Number</th>
+					<th>Expiration Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= @order.name_on_credit_card %></td>
+					<td><%= @order.email_address %></td>
+					<td><%= @order.mailing_address %></td>
+					<td><%= @order.credit_card_number.last(4) %></td>
+					<td><%= @order.credit_card_expiration %></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	<section class="order-table">
 		<h2>Confirmation Summary</h2>
 		<table class="table">
 			<thead>
@@ -19,7 +42,6 @@
 						<td> <%= order_item.quantity %> </td>
 						<td> <%= order_item.calculate_total %> </td>
 						<td> <%= order_item.order_item_status %> </td>
-
 					</tr>
 				<% end %>
 			</tbody>
