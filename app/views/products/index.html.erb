@@ -1,29 +1,10 @@
 <main>
 	<section id = "products-all" class="padded-container">
 		<h2>All Products</h2>
-		<section class="media-table">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Price</th>
-						<th>Description</th>
-						<th>Photo</th>
-						<th>Stock</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @products.each do |product| %>
-						<tr>
-							<td><%= link_to(product.name, product_path(product.id)) %></td>
-							<td><%= product.price %></td>
-							<td><%= product.description %></td>
-							<td class="product-container"><%= image_tag product.photo_url, alt: "products packaging appearance" %></td>
-							<td><%= product.stock %></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</section>
+			<div class="flex-container">
+				<% @products.each do |product|%>
+					<%= render partial: "layouts/product_card", locals:{product:product}%>
+				<% end%>
+			</div>
 	</section>
 </main>

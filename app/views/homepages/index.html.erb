@@ -28,8 +28,10 @@
 
 <section id="homepage-top-rated" class ="padded-container">
     <h2>Top Rated Products</h2>
-    <% Product.top_rated(@products).each do |product|%>
-        <%= render partial: "layouts/product_card", locals:{product:product}%>
-    <% end%>
+    <div class="flex-container">
+        <% Product.top_rated(@products).each do |product|%>
+            <%= render partial: "layouts/product_card", locals:{product:product}%>
+        <% end%>
+    </div>
 
 </section>

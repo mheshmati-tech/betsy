@@ -74,11 +74,16 @@ h1 {
 
 // Products
 
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .product-container {
     padding-top: 2rem;
     width: 18rem;
     border: 1px solid rgba(0,0,0,0.125);
-  }
+}
 
 .product-container img {
     max-height: 100%;

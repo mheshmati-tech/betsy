@@ -2,11 +2,10 @@
 	<section id="about-user" class="padded-container">
 		<h2>Products from <%=@user.name%></h2>
 		<br>
-		<% @user.products.each do |product|%>
-			<%= product.name %>
-			<%= product.price %>
-			<%= product.description %>
-			<%# TODO: add product cards %>
-		<% end %>
+		<div class="flex-container">
+			<% @user.products.each do |product|%>
+				<%= render partial: "layouts/product_card", locals:{product:product}%>
+			<% end%>
+		</div>
 	</section>
 </main>
