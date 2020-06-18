@@ -75,9 +75,9 @@ describe ProductsController do
 
     it "cannot create a new product if not logged in" do
      
-      # needs 'user not logged in' indicated here
       expect { post products_path, params: new_puppy_toy }.wont_change "Product.count"
       expect(flash[:error]).must_equal "You must be logged in to create a new product."
+      must_redirect_to root_path
 
     end
 
@@ -137,10 +137,6 @@ describe ProductsController do
         must_redirect_to root_path
 
       end
-
-      # it "can only be changed by merchant who owns the product" do 
-        
-      # end
     end
   end
-end
+end 
