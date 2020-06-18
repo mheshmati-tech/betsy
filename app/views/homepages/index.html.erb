@@ -14,8 +14,10 @@
     <h2>Featured Product</h2>
     <% if !@products.empty?%>
         <% featured = Product.spotlight(@products)%>
-        <h3> <%= link_to(featured.name, product_path(featured.id)) %> <h3>
-        <%= image_tag featured.photo_url, alt: "products packaging appearance" %>
+        <div class="product-container">
+            <h3> <%= link_to(featured.name, product_path(featured.id)) %> <h3>
+            <%= image_tag featured.photo_url, alt: "products packaging appearance" %>
+        </div>
     <% else%>
         <h3>Coming Soon</h3>
     <% end%>
@@ -25,8 +27,10 @@
 <section>
     <h2>Top Rated Products</h2>
     <% Product.top_rated(@products).each do |product|%>
-        <h3> <%= link_to(product.name, product_path(product.id)) %> <h3>
-        <%= image_tag product.photo_url, alt: "products packaging appearance" %>
+        <div class="product-container">
+            <h3> <%= link_to(product.name, product_path(product.id)) %> <h3>
+            <%= image_tag product.photo_url, alt: "products packaging appearance" %>
+        </div>
     <% end%>
 
 </section>

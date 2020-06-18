@@ -19,6 +19,9 @@
 
 // Nav
 
+nav {
+    background: white;
+}
 nav a {
     color: #333333;
 }
@@ -34,4 +37,15 @@ body {
     padding-left: 30px;
     padding-right: 30px;
     color: #333333;
+}
+
+// Products
+
+.product-container {
+    width: 300px;
   }
+
+.product-container img {
+    max-height: 100%;
+    max-width: 100%;
+}
