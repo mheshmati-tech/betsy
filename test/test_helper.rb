@@ -48,6 +48,20 @@ class ActiveSupport::TestCase
   end
 
 
+  def create_order(product, quantity)
+
+    post product_order_items_path(product.id), params: {quantity: quantity}
+    # binding.pry
+
+    order = Order.find_by(id: session[:order_id])
+    expect(session[:order_id]).must_equal order.id
+
+    return order
+  end
+
+
+
+
 end
 
 
