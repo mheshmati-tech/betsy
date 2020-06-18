@@ -162,9 +162,10 @@ describe OrdersController do
     end
 
     it "will not successfully place order if current order exists but item is not in stock" do
-      product_to_change = @order.order_items.first.product
+      product_to_change = @product
       product_to_change.stock = 0
       product_to_change.save
+      # binding.pry
       patch place_order_path(@order)
 
       @order = Order.find_by(id: @order.id)
