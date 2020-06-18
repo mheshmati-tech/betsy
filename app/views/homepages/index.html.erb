@@ -1,5 +1,32 @@
-<h1>Homepage</h1>
-<%@products.each do |product|%>
-<h2><%=product.name%></h2>
-<p><%=product.price%></p>
-<%end%>
+<section>
+    <h1>Welcome!</h1>
+</section>
+<hr>
+
+<section>
+    <h2>Only the Best for Your Pet</h2>
+    <p>blah blah blah buy some pet stuff</p>
+    <%= link_to "All Products", products_path, class: "btn btn-primary" %>
+</section>
+<hr>
+
+<section>
+    <h2>Featured Product</h2>
+    <% if !@products.empty?%>
+        <% featured = Product.spotlight(@products)%>
+        <h3> <%= link_to(featured.name, product_path(featured.id)) %> <h3>
+        <%= image_tag featured.photo_url, alt: "products packaging appearance" %>
+    <% else%>
+        <h3>Coming Soon</h3>
+    <% end%>
+</section>
+<hr>
+
+<section>
+    <h2>Top Rated Products</h2>
+    <% Product.top_rated(@products).each do |product|%>
+        <h3> <%= link_to(product.name, product_path(product.id)) %> <h3>
+        <%= image_tag product.photo_url, alt: "products packaging appearance" %>
+    <% end%>
+
+</section>

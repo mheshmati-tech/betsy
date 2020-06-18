@@ -50,7 +50,8 @@ describe ProductsController do
           description: "a fun toy for your dog",
           stock: 2,
           photo_url: "https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg",
-          user_id: 3
+          user_id: 3,
+          product_status: "active"
         },
       }
     }
@@ -63,12 +64,21 @@ describe ProductsController do
       expect(Product.last.description).must_equal new_puppy_toy[:product][:description]
       expect(Product.last.photo_url).must_equal new_puppy_toy[:product][:photo_url]
       expect(Product.last.user_id).must_equal session[:user_id]
+      expect(Product.last.product_status).must_equal new_puppy_toy[:product][:product_status]
 
     end
 
     it "cannot create a new product with invalid information" do
       new_puppy_toy[:product][:name] = nil
       expect { post products_path, params: new_puppy_toy }.wont_change "Product.count"
+    end
+
+    it "cannot create a new product if not logged in" do
+     
+      expect { post products_path, params: new_puppy_toy }.wont_change "Product.count"
+      expect(flash[:error]).must_equal "You must be logged in to create a new product."
+      must_redirect_to root_path
+
     end
 
     describe "update" do
@@ -99,8 +109,6 @@ describe ProductsController do
         expect(product.description).must_equal new_puppy_toy[:product][:description]
         expect(product.photo_url).must_equal new_puppy_toy[:product][:photo_url]
         expect(product.user_id).must_equal session[:user_id]
-
-
       end
       it "will respond with flash error message for updating invalid product id" do
         expect { patch product_path(-1), params: new_puppy_toy }.wont_change "Product.count"
@@ -113,19 +121,22 @@ describe ProductsController do
         product.reload
         expect(product.name).wont_be_nil
       end
-    end
-  end
 
-  describe "destroy" do
-    it "will destroy an existing product with a valid id and change count" do
-      expect { delete product_path(@leash.id) }.must_differ "Product.count", -1
-      must_respond_with :redirect
-      must_redirect_to root_path
     end
-    it "will not destroy an invalid product and wll not change count" do
-      expect { delete product_path(-1) }.wont_change "Product.count"
-      must_respond_with :redirect
-      must_redirect_to root_path
+    describe "change_product_status" do
+   
+      it "can have a product status of active" do
+        expect(@leash.product_status).must_equal "active"
+        must_redirect_to root_path
+
+      end
+      
+      it "can have a product status of inactive" do
+        @leash.product_status = "inactive"
+        expect(@leash.product_status).must_equal "inactive"
+        must_redirect_to root_path
+
+      end
     end
   end
-end
+end 
