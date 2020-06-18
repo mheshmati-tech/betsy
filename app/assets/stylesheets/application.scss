@@ -33,7 +33,7 @@ nav a:hover {
 // Body
 
 body { 
-    // padding-top: 0rem;
+    padding-top: 3rem;
     color: #333333;
 }
 
@@ -92,6 +92,7 @@ footer {
     width: 100%;
     background-color: #4f5d75;
     color: #fff;
+    // TODO: get footer to stick to bottom of window
 }
 
 .copyright p {

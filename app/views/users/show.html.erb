@@ -1,8 +1,12 @@
-<h1>User Show Page</h1>
-<p>Name: <%=@user.name%></p>
-<% @user.products.each do |product|%>
-	<%= product.name %>
-	<%= product.price %>
-	<%= product.description %>
-	<p> TODO pics </p>
-<% end %>
+<main>
+	<section id="about-user" class="padded-container">
+		<h2>Products from <%=@user.name%></h2>
+		<br>
+		<% @user.products.each do |product|%>
+			<%= product.name %>
+			<%= product.price %>
+			<%= product.description %>
+			<%# TODO: add product cards %>
+		<% end %>
+	</section>
+</main>

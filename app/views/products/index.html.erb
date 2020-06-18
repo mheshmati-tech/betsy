@@ -1,27 +1,29 @@
 <main>
-	<h2>List of Products</h2>
-	<section class="media-table">
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Price</th>
-					<th>Description</th>
-					<th>Photo</th>
-					<th>Stock</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @products.each do |product| %>
+	<section id = "products-all" class="padded-container">
+		<h2>All Products</h2>
+		<section class="media-table">
+			<table class="table">
+				<thead>
 					<tr>
-						<td><%= link_to(product.name, product_path(product.id)) %></td>
-						<td><%= product.price %></td>
-						<td><%= product.description %></td>
-						<td><%= image_tag product.photo_url, alt: "products packaging appearance" %></td>
-						<td><%= product.stock %></td>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Description</th>
+						<th>Photo</th>
+						<th>Stock</th>
 					</tr>
-				<% end %>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<% @products.each do |product| %>
+						<tr>
+							<td><%= link_to(product.name, product_path(product.id)) %></td>
+							<td><%= product.price %></td>
+							<td><%= product.description %></td>
+							<td class="product-container"><%= image_tag product.photo_url, alt: "products packaging appearance" %></td>
+							<td><%= product.stock %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</section>
 	</section>
 </main>
