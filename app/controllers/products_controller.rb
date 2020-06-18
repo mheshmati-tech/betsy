@@ -61,7 +61,6 @@ class ProductsController < ApplicationController
     end
   end
 
-
   def change_product_status
     if @product.product_status == "active"
       @product.product_status = "inactive"
