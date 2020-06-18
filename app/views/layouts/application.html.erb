@@ -6,6 +6,7 @@
 		<%= csp_meta_tag %>
 		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<script src="https://kit.fontawesome.com/ec404859b9.js" crossorigin="anonymous"></script>
 	</head>
 
 	<body>
@@ -13,7 +14,7 @@
 		<header class="app-header">
 			<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 				<a class="navbar-brand" href="<%= root_path %>">p3tsy</a>
-				<ul class="nav app-header__site-nav-container">
+				<ul class="navbar-nav mr-auto">
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Browse by Category
@@ -34,28 +35,37 @@
 							<% end %>
 						</div>
 					</li>
-					<li class="nav-item app-header__nav_item">
-						<a class="nav-link" href="<%= products_path%>"> View All Products</a>
+					<li class="nav-item">
+						<a class="nav-link" href="<%= products_path%>">View All Products</a>
 					</li>
+				</ul>
+
+				<ul class="navbar-nav navbar-right">
+
 					<% if @logged_user %>
-						<li class="nav-item app-header__nav_item">
-							<%= link_to "My Account", myaccount_path, class: "btn btn-primary" %>
+						<li class="nav-item">
+							<a class="nav-link" href="<%= myaccount_path%>">My Account</a>
 						</li>
-						<li class="nav-item app-header__nav_item">
+						<li class="nav-item">
 							<%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>
 						</li>
 					<% else %>
-						<li class="nav-item app-header__nav_item">
+						<li class="nav-item">
 							<%= link_to "Login with Github", github_login_path, class: "btn btn-primary" %>
 						</li>
 					<% end %>
+
 					<% if @current_order %>
-						<li class="nav-item app-header__nav_item">
-							<%= link_to "Shopping Cart", order_path(@current_order.id), class: "btn btn-primary" %>
+						<li class="nav-item">
+							<a class="nav-link" href="<%= order_path(@current_order.id) %>">
+								<i class="fas fa-shopping-cart"></i>
+							</a>
 						</li>
 					<% else %>
-						<li class="nav-item app-header__nav_item">
-							<%= link_to "Shopping Cart", new_order_path, class: "btn btn-primary" %>
+						<li class="nav-item">
+							<a class="nav-link" href="<%= new_order_path %>">
+								<i class="fas fa-shopping-cart"></i>
+							</a>
 						</li>
 					<% end %>
 				</ul>
