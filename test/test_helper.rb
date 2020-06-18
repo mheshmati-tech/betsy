@@ -1,9 +1,9 @@
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+require "rails/test_help"
 require "minitest/rails"
 require "minitest/reporters"  # for Colorized output
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 #  For colorful output!
 Minitest::Reporters.use!(
@@ -29,28 +29,31 @@ class ActiveSupport::TestCase
 
   def mock_auth_hash(user)
     return {
-      provider: user.provider,
-      uid: user.uid,
-      info: {
-        email: user.email,
-        name: user.name
-      }
-    }
+             provider: user.provider,
+             uid: user.uid,
+             info: {
+               email: user.email,
+               name: user.name,
+             },
+           }
   end
 
   def perform_login(user = nil)
     user ||= User.first
-  
+
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
     get auth_callback_path(:github)
-  
+
     return user
   end
 
-
+  def create_order(product, quantity)
+    post product_order_items_path(product.id), params: { quantity: quantity }
+    order = Order.find_by(id: session[:order_id])
+    expect(session[:order_id]).must_equal order.id
+    return order
+  end
 end
-
-
 
 # user.uid = auth_hash[:uid]
 # user.provider = "github"
