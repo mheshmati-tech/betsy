@@ -95,7 +95,6 @@ describe OrdersController do
     }
     it "will change order status to cancelled and clear session order id" do
       order_id = create_order(@product,1).id
-      puts order_id
       patch order_path(order_id), params: new_order_hash
 
       patch cancel_order_path(order_id)
@@ -107,9 +106,82 @@ describe OrdersController do
       must_redirect_to root_path
     end
 
-    it "will respond with not_found if no current order set" do
-      assert_raises( "NoMethodError") { get order_path(-1) }
+  end
+
+  describe "finalize_order" do
+    let (:new_order_hash) {
+      {
+        order: {
+          email_address: "louie@hotmail.com",
+          mailing_address: "52 Center St.",
+          name_on_credit_card: "Louie",
+          credit_card_number: "4321432143214321",
+          credit_card_expiration: "03/22",
+          credit_card_CVV: "321",
+          billing_zip_code: "12321"
+        },
+      }
+    }
+    it "will successfully show finalize page" do
+      order_id = create_order(@product,1).id
+      patch order_path(order_id), params: new_order_hash
+
+      get finalize_order_path(order_id)
     end
+
+    it "will redirect to root path if current order doesn't exist" do
+      get finalize_order_path(1)
+      must_redirect_to root_path
+      flash[:error].must_equal "Order does not exist"
+    end
+
+    it "will redirect to root path if current order is not equal to order id in params" do
+      order_id = create_order(@product,1).id
+      patch order_path(order_id), params: new_order_hash
+
+      get finalize_order_path(-1)
+      must_redirect_to root_path
+      flash[:error].must_equal "You can't finalize an order that isn't yours"
+    end
+  end
+
+  describe "edit order" do
+    let (:new_order_hash) {
+      {
+        order: {
+          email_address: "louie@hotmail.com",
+          mailing_address: "52 Center St.",
+          name_on_credit_card: "Louie",
+          credit_card_number: "4321432143214321",
+          credit_card_expiration: "03/22",
+          credit_card_CVV: "321",
+          billing_zip_code: "12321"
+        },
+      }
+    }
+    it "will successfully show edit page if current order exists" do
+      order_id = create_order(@product,1).id
+      patch order_path(order_id), params: new_order_hash
+
+      get edit_order_path(order_id)
+    end
+
+    it "will redirect to root path if current order doesn't exist" do
+      get edit_order_path(1)
+      must_redirect_to root_path
+      flash[:error].must_equal "Order does not exist"
+    end
+
+    it "will redirect to root path if current order is not equal to order id in params" do
+      order_id = create_order(@product,1).id
+      patch order_path(order_id), params: new_order_hash
+
+      get edit_order_path(-1)
+      must_redirect_to root_path
+      flash[:error].must_equal "You can't edit an order that isn't yours"
+    end
+
+
   end
 
 end
