@@ -4,8 +4,8 @@ collar:
   stock: 1
   description: small blue collar
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
-  user_id: 2
-  product_status: active
+  user: ada
+  product_status: inactive
 
 leash: 
   name: leash
@@ -13,7 +13,7 @@ leash:
   stock: 10
   description: small blue leash
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
-  user_id: 1
+  user: grace
   product_status: active
  
 
@@ -23,7 +23,7 @@ doghouse:
   stock: 1
   description: small blue doghouse
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
-  user_id: 3
+  user: ada
   product_status: active
   
 bowl: 
@@ -32,7 +32,7 @@ bowl:
   stock: 1
   description: small blue bowl
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
-  user_id: 4
+  user: ada
   product_status: active
  
 bones: 
@@ -41,7 +41,7 @@ bones:
   stock: 1
   description: small blue bones
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
-  user_id: 5
+  user: ada
   product_status: active
   
 dish: 
@@ -50,7 +50,7 @@ dish:
   stock: 1
   description: small blue dish
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
-  user_id: 6
+  user: ada
   product_status: active
 
 

@@ -68,13 +68,21 @@ describe ProductsController do
 
     end
 
+    it "will set default photo url for valid product" do
+     @product = Product.create(name: "toy", price: 1.99, description: "fun times", stock: 1, photo_url: "", user: "grace", product_status: "active")
+     expect { post products_path(@product) }.wont_change "Product.count"
+
+     
+    end
+
     it "cannot create a new product with invalid information" do
       new_puppy_toy[:product][:name] = nil
       expect { post products_path, params: new_puppy_toy }.wont_change "Product.count"
     end
 
     it "cannot create a new product if not logged in" do
-     
+      delete logout_path
+      
       expect { post products_path, params: new_puppy_toy }.wont_change "Product.count"
       expect(flash[:error]).must_equal "You must be logged in to create a new product."
       must_redirect_to root_path
@@ -110,10 +118,13 @@ describe ProductsController do
         expect(product.photo_url).must_equal new_puppy_toy[:product][:photo_url]
         expect(product.user_id).must_equal session[:user_id]
       end
+# ################################################################################################
+
       it "will respond with flash error message for updating invalid product id" do
         expect { patch product_path(-1), params: new_puppy_toy }.wont_change "Product.count"
-        expect(flash[:error]).to be_present
+        expect(flash[:error]).must_equal "You can't edit a product that isn't yours"
       end
+# #################################################################################################
       it "will not update if the params are invalid" do
         new_puppy_toy[:product][:name] = nil
         product = Product.first
@@ -124,19 +135,25 @@ describe ProductsController do
 
     end
     describe "change_product_status" do
-   
-      it "can have a product status of active" do
-        expect(@leash.product_status).must_equal "active"
+
+      it "will change the product status from active to inactive" do
+        patch change_product_status_path(@leash) 
+        reloaded_leash = Product.find_by(id: @leash.id)
+        expect(reloaded_leash.product_status).must_equal "inactive"
         must_redirect_to root_path
 
       end
-      
-      it "can have a product status of inactive" do
-        @leash.product_status = "inactive"
-        expect(@leash.product_status).must_equal "inactive"
+
+      it "will change the product status from inactive to active" do
+        @collar = products(:collar)
+        patch change_product_status_path(@collar) 
+        reloaded_collar = Product.find_by(id: @collar.id)
+        expect(reloaded_collar.product_status).must_equal "active"
         must_redirect_to root_path
 
       end
     end
   end
 end 
+
+
