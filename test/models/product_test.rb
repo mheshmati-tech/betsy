@@ -59,10 +59,6 @@ describe Product do
     end
   end
   
-
-
-
-
   describe "average_rating" do
     it 'calculates average rating' do
       
@@ -81,17 +77,19 @@ describe Product do
   end
 
   describe "top rated" do
-
     it "gets highest rated products" do
       Review.create(rating: 5, text: "good", product_id: Product.first.id)
       Review.create(rating: 2, text: "poor", product_id: Product.first.id)
       Review.create(rating: 5, text: "excellent", product_id: Product.first.id)
 
-      expect(Product.top_rated(Product.all)).must_include @collar
       expect(Product.top_rated(Product.all)).must_include Product.first
-
-  
-     
     end
+  end
+
+  describe "decrease stock" do
+    it "will decrease stock" do
+      expect(Product.first.decrease_inventory(Product.first.stock)).must_be_kind_of Integer    
+      expect(Product.first.decrease_inventory(Product.first.stock)).must_equal 0     
+     end
   end
 end
