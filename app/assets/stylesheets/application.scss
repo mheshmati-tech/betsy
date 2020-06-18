@@ -16,3 +16,22 @@
 @import "bootstrap";
 
 @import "**/*";
+
+// Nav
+
+nav a {
+    color: #333333;
+}
+
+nav a:hover { 
+    color: grey;
+}
+
+// Body
+
+body { 
+    padding-top: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #333333;
+  }
