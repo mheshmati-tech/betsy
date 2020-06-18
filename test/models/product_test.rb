@@ -90,7 +90,7 @@ describe Product do
       expect(Product.top_rated(Product.all)).must_include @collar
       expect(Product.top_rated(Product.all)).must_include Product.first
 
-      end
+  
      
     end
   end
