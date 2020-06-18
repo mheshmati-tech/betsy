@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
     # @order_items = Order.order_items
   end
 
+# TODO: is create method necessary??
   def create
     if @current_order.nil?
       @current_order = Order.new
