@@ -8,14 +8,14 @@
 </section>
 <hr>
 
-<section >
-    <h2>Discover Pawmazing Deals</h2>
+<section id="homepage-products" class ="padded-container">
+    <h2>Discover Paw-mazing Deals</h2>
     <p>blah blah blah buy some pet stuff</p>
     <%= link_to "All Products", products_path, class: "btn btn-primary" %>
 </section>
 <hr>
 
-<section>
+<section id="homepage-featured" class ="padded-container">
     <h2>Featured Product</h2>
     <% if !@products.empty?%>
         <% featured = Product.spotlight(@products)%>
@@ -29,7 +29,7 @@
 </section>
 <hr>
 
-<section>
+<section id="homepage-top-rated" class ="padded-container">
     <h2>Top Rated Products</h2>
     <% Product.top_rated(@products).each do |product|%>
         <div class="product-container">

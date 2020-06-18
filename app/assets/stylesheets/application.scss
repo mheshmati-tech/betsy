@@ -33,10 +33,12 @@ nav a:hover {
 // Body
 
 body { 
-    padding-top: 60px;
-    padding-left: 30px;
-    padding-right: 30px;
+    // padding-top: 0rem;
     color: #333333;
+}
+
+.padded-container {
+    padding: 4rem;
 }
 
 h1 {
@@ -79,4 +81,19 @@ h1 {
 .product-container img {
     max-height: 100%;
     max-width: 100%;
+}
+
+// Footer
+
+footer {
+    margin-top: 10rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 100%;
+    background-color: #4f5d75;
+    color: #fff;
+}
+
+.copyright p {
+    text-align: center;
 }
