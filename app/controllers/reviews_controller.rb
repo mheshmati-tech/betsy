@@ -1,12 +1,11 @@
 class ReviewsController < ApplicationController
 
-    before_action :find_review, only:[:show, :edit, :update, :destroy]
+    # before_action :find_review, only:[:show, :edit]
     before_action :find_product
     before_action :is_merchant, except:[:show]
-    # TODO: restrict edit, update and destroy to logged user that created original review? Review will need user_id
 
-    def show
-    end
+    # def show
+    # end
 
     def new
         @review = Review.new
@@ -22,47 +21,47 @@ class ReviewsController < ApplicationController
             return
         else
             flash.now[:error] = "Could not save review. Errors: #{@review.errors.messages}"
-            render :new
+            render :new, status: :bad_request
             return
         end
     end
 
-    def edit
-    end
+    # def edit
+    # end
 
-    def update
-        if @review.update(review_params)
-            flash[:success] = "Review successfully edited"
-            redirect_to root_path
-            return
-        else
-            flash.now[:error] = "Unable to edit review. Errors: #{@review.errors.messages}"
-            render :edit
-            return
-        end
-    end
+    # def update
+    #     if @review.update(review_params)
+    #         flash[:success] = "Review successfully edited"
+    #         redirect_to root_path
+    #         return
+    #     else
+    #         flash.now[:error] = "Unable to edit review. Errors: #{@review.errors.messages}"
+    #         render :edit
+    #         return
+    #     end
+    # end
 
-    def destroy
-        if @review.nil?
-            head :not_found
-            return
-        end
+    # def destroy
+    #     if @review.nil?
+    #         head :not_found
+    #         return
+    #     end
 
-        @review.destroy
-        flash[:success] = "Review successfully deleted"
-        redirect_to root_path
-        return
-    end
+    #     @review.destroy
+    #     flash[:success] = "Review successfully deleted"
+    #     redirect_to root_path
+    #     return
+    # end
 
     private
 
-    def find_review
-        @review = Review.find_by(id: params[:id])
-        if @review.nil?
-            head :not_found
-            return
-        end
-    end
+    # def find_review
+    #     @review = Review.find_by(id: params[:id])
+    #     if @review.nil?
+    #         head :not_found
+    #         return
+    #     end
+    # end
 
     def find_product
         @product = Product.find_by(id: params[:product_id])
@@ -75,7 +74,7 @@ class ReviewsController < ApplicationController
     def is_merchant
         if @product.user.id == session[:user_id]
             flash[:error] = "Users cannot review their own product"
-            redirect_to root_path
+            redirect_to product_path(params[:product_id])
         end
     end
 

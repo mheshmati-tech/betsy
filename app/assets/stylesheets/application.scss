@@ -33,6 +33,7 @@ nav a:hover {
 // Body
 
 body { 
+    font-family: 'Open Sans', sans-serif;
     padding-top: 3rem;
     color: #333333;
 }
@@ -41,8 +42,9 @@ body {
     padding: 4rem;
 }
 
-h1 {
+h1, h2 {
     font-size: 6rem;
+    font-family: 'Lato', sans-serif;
 }
 
 // Hero Image
@@ -85,7 +87,17 @@ h1 {
     border: 1px solid rgba(0,0,0,0.125);
 }
 
+.product-container-large {
+    padding-top: 2rem;
+    width: 25rem;
+}
+
 .product-container img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.product-container-large img {
     max-height: 100%;
     max-width: 100%;
 }
