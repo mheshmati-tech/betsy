@@ -37,16 +37,22 @@ describe OrderItemsController do
 
     it "succesfully increments existing order item for same product if quantity is avail" do
       product = products(:rubber_duck)
-    
-  
       post product_order_items_path(product_id: product.id),params:{quantity:1}
-
-      #updates = { order_item: {quantity:3} }
       expect { post product_order_items_path(product_id: product.id),params:{quantity:1} }.wont_change "OrderItem.count"
-      # order = Order.find_by(id: @order.id)
       @order.reload
-      expect @order.order_items.find_by(product_id: product.id).quantity.must_equal 2      
+      expect @order.order_items.find_by(product_id: product.id).quantity.must_equal 2    
+    end
 
+    it "does not increment existing order item for same product if quantity is NOT avail" do
+      product = products(:rubber_duck)
+      post product_order_items_path(product_id: product.id),params:{quantity:1}
+      puts "------"
+      puts product.stock
+      expect { post product_order_items_path(product_id: product.id),params:{quantity:20} }.wont_change "OrderItem.count"
+      expect(flash[:error]).must_equal "Not enough inventory available."
+      must_redirect_to product_path(product)
+      @order.reload
+      expect @order.order_items.find_by(product_id: product.id).quantity.must_equal 1 
     end
 
   end

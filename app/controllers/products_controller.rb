@@ -69,7 +69,7 @@ class ProductsController < ApplicationController
     end
 
     @product.save
-    redirect_to root_path
+    redirect_to myaccount_path
     return
   end
 
