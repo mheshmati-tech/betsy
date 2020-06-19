@@ -81,5 +81,43 @@ describe UsersController do
       must_redirect_to root_path
     end
   end
+
+  describe "my account" do
+    it "responds with success if logged in" do
+      user = users(:grace)
+      perform_login(user)
+      get myaccount_path
+      must_respond_with :success
+    end
+
+    it "returns error if not logged in" do 
+      get myaccount_path
+      expect(flash[:errors]).must_equal "You must be logged in to see this page"
+      must_redirect_to root_path
+    end
+  end
+
+  describe "my orders" do
+    it "responds with succes if logged in" do
+      user = users(:grace)
+      perform_login(user)
+      get myorders_path
+      must_respond_with :success
+    end
+
+    it "responds with succes if logged in and adding filter to path" do
+      user = users(:grace)
+      perform_login(user)
+      get myorders_path, params: {filter: "sucess"}
+      must_respond_with :success
+    end
+
+
+    it "returns error if not logged in" do 
+      get myorders_path
+      expect(flash[:errors]).must_equal "You must be logged in to see this page"
+      must_redirect_to root_path
+    end
+  end
   
 end
