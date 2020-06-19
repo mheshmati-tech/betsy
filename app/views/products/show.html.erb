@@ -14,18 +14,16 @@
                 </div>
 	</section>
 
-        <section id="add-to-cart" class="padded-container">
-                <%= form_with model: @order_item, url: product_order_items_path(@product.id), class: 'order_item-form' do |f| %> 
-                        <section>
-                        <%= f.label :quantity %>
-                        <%= f.text_field :quantity %> 
-                        </section>
-
-                        <%= f.submit "Add to Cart" ,class: "order_item-button" %>
-                <% end %>
         </section>
-
-        <br>
+                        <section id="add-to-cart" class="padded-container">
+                                <%= form_with model: @order_item, url: product_order_items_path(@product.id), class: 'order_item-form' do |f| %>
+                                        <section>
+                                                <%= f.select :quantity, options_for_select(make_range(@product.stock)) %>
+                                        </section>
+                                        <%= f.submit "Add to Cart" , class: "btn btn-primary" %>
+                                <% end %>
+                        </section>
+                        <br>
         <section id="reviews" class="padded-container">
                 <%= link_to "Leave a Review", new_product_review_path(@product.id), class: "btn btn-primary" %>
                 <br>
