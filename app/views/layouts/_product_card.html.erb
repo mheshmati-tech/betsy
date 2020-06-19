@@ -1,6 +1,7 @@
 <div class="product-container">
-
-    <%= image_tag product.photo_url, alt: "products packaging appearance" %>
+    <div class="product-image-small">
+        <%= image_tag product.photo_url, alt: "products packaging appearance" %>
+    </div>
 
     <div class="product-container-details">
         <h3><%= link_to(product.name, product_path(product.id)) %></h3>
