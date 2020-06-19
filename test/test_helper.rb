@@ -4,7 +4,15 @@ require "rails/test_help"
 require "minitest/rails"
 require "minitest/reporters"  # for Colorized output
 require "simplecov"
-SimpleCov.start
+SimpleCov.start "rails" do
+  add_filter "app/channels/"
+  add_filter "app/jobs/"
+  add_filter "app/mailers/"
+  add_filter "/bin/"
+  add_filter "/db/"
+  add_filter "/test/"
+  add_filter "app/helpers/"
+end
 #  For colorful output!
 Minitest::Reporters.use!(
   Minitest::Reporters::SpecReporter.new,
