@@ -32,6 +32,7 @@
         <div class="flex-container">
             <% Product.top_rated(@products).each do |product|%>
                 <%= render partial: "layouts/product_card", locals:{product:product}%>
+            <% end%>
         </div>
     <% else%>
         <h3>Coming Soon</h3>
