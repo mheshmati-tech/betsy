@@ -122,3 +122,39 @@ footer {
 .copyright p {
     text-align: center;
 }
+
+
+.team-member {
+    margin: 0, auto;
+}
+
+.meet-the-team-page {
+    margin: 0, auto;
+    text-align: center;
+}
+
+.team-header {
+    background-color: pink;
+    color: whitesmoke;
+    margin: 0 200px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.team-members img {
+    width:300px;
+    height:300px;
+    object-fit:cover;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    // background-color: rgb(235, 234, 229);
+    padding: 10px 80px;
+    margin: 0 auto;
+    width: 800px;
+
+  }
+  
