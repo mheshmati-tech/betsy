@@ -51,3 +51,12 @@ dish:
   photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
   user: ada
   product_status: active
+
+rubber_duck:
+  name: rubber duck
+  price: 20.00
+  stock: 20
+  description: lil rubber duck
+  photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
+  user: ada
+  product_status: active
