@@ -92,6 +92,9 @@ describe UsersController do
 
     it "returns error if not logged in" do 
       get myaccount_path
+      # user = users(:grace)
+      # user.reload
+      # expect(user).must_be_nil
       expect(flash[:errors]).must_equal "You must be logged in to see this page"
       must_redirect_to root_path
     end
