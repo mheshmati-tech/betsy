@@ -1,12 +1,3 @@
-collar:
-  name: collar
-  price: 15.00
-  stock: 1
-  description: small blue collar
-  photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
-  user: ada
-  product_status: inactive
-
 leash:
   name: leash
   price: 5.99
@@ -16,6 +7,15 @@ leash:
   user: grace
   product_status: active
 
+collar:
+  name: collar
+  price: 15.00
+  stock: 1
+  description: small blue collar
+  photo_url: https://dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg
+  user: ada
+  product_status: inactive
+  
 doghouse:
   name: doghouse
   price: 15.00

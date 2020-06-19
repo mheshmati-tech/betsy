@@ -152,7 +152,7 @@ describe ProductsController do
         patch change_product_status_path(@leash) 
         reloaded_leash = Product.find_by(id: @leash.id)
         expect(reloaded_leash.product_status).must_equal "inactive"
-        must_redirect_to root_path
+        must_redirect_to myaccount_path
 
       end
 
@@ -161,7 +161,7 @@ describe ProductsController do
         patch change_product_status_path(@collar) 
         reloaded_collar = Product.find_by(id: @collar.id)
         expect(reloaded_collar.product_status).must_equal "active"
-        must_redirect_to root_path
+        must_redirect_to myaccount_path
 
       end
     end
