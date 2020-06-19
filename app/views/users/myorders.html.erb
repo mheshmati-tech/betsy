@@ -3,6 +3,7 @@
 	<br>
 	<main>
 		<%# <h2>List of Order Items</h2> %>
+		<p><strong>Filter by:</strong> <%=link_to "all", myorders_path %> | <%=link_to "paid", myorders_path(:filter => "paid") %> |	<%=link_to "shipped", myorders_path(:filter => "shipped") %> </p>
 		<section class="order-items-table">
 			<table class="table">
 				<thead>
