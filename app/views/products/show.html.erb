@@ -1,28 +1,36 @@
 <main>
-	<section>
-        <h2> <%= @product.name%> <h2>
-        <p>  <%= @product.description %> </p>
-        <p> $ <%= @product.price%> </p>
-        <p> <%= @product.stock %> </p>
-        <p> Status: <%= @product.product_status %> </p>
-
-        <%= image_tag @product.photo_url, alt: "products packaging appearance" %>
+	<section id="product-info">
+                <div class="flex-container">
+                        <div id="product-image" class="product-container-large padded-container">
+                                <%= image_tag @product.photo_url, alt: "products packaging appearance" %>
+                        </div>
+                        <div id="product-details" class="padded-container">
+                                <h2> <%= @product.name%> <h2>
+                                <h6>  <%= @product.description %> </h6>
+                                <p> $ <%= @product.price%> </p>
+                                <p> <%= @product.stock %> currently in stock</p>
+                                <p> Status: <%= @product.product_status %> </p>
+                        </div>     
+                </div>
 	</section>
 
-        <%= form_with model: @order_item, url: product_order_items_path(@product.id), class: 'order_item-form' do |f| %> 
-                <section>
-                <%= f.label :quantity %>
-                <%= f.text_field :quantity %> 
-                </section>
+        <section id="add-to-cart" class="padded-container">
+                <%= form_with model: @order_item, url: product_order_items_path(@product.id), class: 'order_item-form' do |f| %> 
+                        <section>
+                        <%= f.label :quantity %>
+                        <%= f.text_field :quantity %> 
+                        </section>
 
-                <%= f.submit "Add to Cart" ,class: "order_item-button" %>
-        <% end %>
+                        <%= f.submit "Add to Cart" ,class: "order_item-button" %>
+                <% end %>
+        </section>
 
         <br>
-        <section class="reviews">
+        <section id="reviews" class="padded-container">
                 <%= link_to "Leave a Review", new_product_review_path(@product.id), class: "btn btn-primary" %>
-                <h4> Average Rating: </h4>
-                <%= @product.average_rating %> / 5
+                <br>
+                <h4> Average Rating: <%= @product.average_rating %> / 5 </h4>
+                <br>
 
                 <h4>Reviews</h4>
                 <table class="table">
