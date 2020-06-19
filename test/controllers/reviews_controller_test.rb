@@ -53,6 +53,17 @@ describe ReviewsController do
       must_respond_with :bad_request
     end
 
+    it "cannot leave review for non-existent product" do
+      invalid_hash = {
+        review: {
+          rating: 5,
+          text: "the best"
+        }
+      }
+      expect { post product_reviews_path(product_id: -1), params: invalid_hash }.wont_change "Review.count"
+      must_respond_with :not_found
+    end
+
     it "does not allow users to review their own products" do
       perform_login(users(:grace))
       valid_hash = {
