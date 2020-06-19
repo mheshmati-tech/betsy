@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root to: "homepages#index"
 
+  get "/meet_the_team", to: "homepages#meet_the_team", as: "meet_the_team"
+
   resources :users, only: [:index, :show]
   get "/myaccount", to: "users#myaccount", as: "myaccount"
   get "/myaccount/orders", to: "users#myorders", as: "myorders"
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
   patch "/products/:id/change_product_status", to: "products#change_product_status", as: "change_product_status"
 
   patch "/order_items/:id/change_order_item_status", to: "order_items#change_order_item_status", as: "change_order_item_status"
+
 
 
   resources :orders, only: [:new, :show, :edit]
