@@ -22,9 +22,6 @@ class OrderItemsController < ApplicationController
           if existing_order_item.save
             flash[:success] = "order item quantity successfuly updated."
             redirect_to product_path(params[:product_id])
-          else
-            flash[:error] = "unable to update order item quantity."
-            redirect_to product_path(params[:product_id])
           end
           return
         end
