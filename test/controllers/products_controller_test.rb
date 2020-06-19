@@ -55,6 +55,7 @@ describe ProductsController do
         },
       }
     }
+    
     let (:no_url) {
         {
           product: {
@@ -67,8 +68,8 @@ describe ProductsController do
           },
         }
       }
+
     it "can create a new product with valid information" do
-      
       expect { post products_path, params: new_puppy_toy }.must_differ "Product.count", 1
       must_respond_with :redirect
       expect(Product.last.name).must_equal new_puppy_toy[:product][:name]
@@ -81,20 +82,10 @@ describe ProductsController do
     end
 
     it "will set default photo url for valid product" do
-      
-    #  expect { post products_path, params: no_url }.must_equal "https://lh3.googleusercontent.com/0hJSje8_Z034MV_zDnQFGVt1Id-P21tDb3AP-J7WFtH0ITgL47YvUV642kZg1fXxtZaO47A14pRjWP2tG-2AlHm7jst2i8mB-yZQPX0I67SB4X9iJs4Co9lge5RlgsMoK8BeP1pXNtKuQkneNuBrxPr-x6n2KpVj7tA_E4k1krdZPj6Z_kZT8XzNIN_ztY3rD9HdwInpgaQ7HYImlTdGo_A50RoLEJ-7sK2_gFJAbSLIwnxEAAcaw7ELKxhO0p2QUbBk8Qwp3GnleViM2LVIUIQMcQDt7JvcKgPWH1DpNYpv8GRitVPOIBOt4mVvsVSJ5I6iBXU_7Tz1b1HQC97OajROBAWNSYryi_wqrac6MjfwFS0VbRxiAthPtUxApWpwTmxSF8LTqtUh2MQfLnOGp4wnX-CkfIQzqazG20xxXvsv24iLE1PZwjwkFb2vE8fglhUr0PAvEHseJz7D1PJwt5MtH38gdDPTK8o8WhJ1R4vGaiCqcekvR6OUGy4DYUEjW-zd3psZpwuQLxPLlgefvSvL4lErgVrxV8bg61cn7WcQ2Avev4L36DAS40RyY0cqInt_CJ-9Ovp3oRPTwTp0EwEL2XmHHKoW8yaSgJloyjAzWT9SHAAnoAoTjHWeHvXot8qdWvT8dwmq-LRsR_-cpE5-qNo2ejrkDUrCD5k7R35r5F_TKXLG9CX-Tkrf7g=w600-h512-no?authuser=0"
-    #  expect(@product.last.photo_url).wont_be_nil
-
-       
-     expect { post products_path, params: no_url }.must_differ "Product.count", 1
-     must_respond_with :redirect
+      expect { post products_path, params: no_url }.must_differ "Product.count", 1
+      must_respond_with :redirect
     
-     expect(Product.last.photo_url).must_equal "https://lh3.googleusercontent.com/0hJSje8_Z034MV_zDnQFGVt1Id-P21tDb3AP-J7WFtH0ITgL47YvUV642kZg1fXxtZaO47A14pRjWP2tG-2AlHm7jst2i8mB-yZQPX0I67SB4X9iJs4Co9lge5RlgsMoK8BeP1pXNtKuQkneNuBrxPr-x6n2KpVj7tA_E4k1krdZPj6Z_kZT8XzNIN_ztY3rD9HdwInpgaQ7HYImlTdGo_A50RoLEJ-7sK2_gFJAbSLIwnxEAAcaw7ELKxhO0p2QUbBk8Qwp3GnleViM2LVIUIQMcQDt7JvcKgPWH1DpNYpv8GRitVPOIBOt4mVvsVSJ5I6iBXU_7Tz1b1HQC97OajROBAWNSYryi_wqrac6MjfwFS0VbRxiAthPtUxApWpwTmxSF8LTqtUh2MQfLnOGp4wnX-CkfIQzqazG20xxXvsv24iLE1PZwjwkFb2vE8fglhUr0PAvEHseJz7D1PJwt5MtH38gdDPTK8o8WhJ1R4vGaiCqcekvR6OUGy4DYUEjW-zd3psZpwuQLxPLlgefvSvL4lErgVrxV8bg61cn7WcQ2Avev4L36DAS40RyY0cqInt_CJ-9Ovp3oRPTwTp0EwEL2XmHHKoW8yaSgJloyjAzWT9SHAAnoAoTjHWeHvXot8qdWvT8dwmq-LRsR_-cpE5-qNo2ejrkDUrCD5k7R35r5F_TKXLG9CX-Tkrf7g=w600-h512-no?authuser=0"
-
-  
-
-
-     
+      expect(Product.last.photo_url).must_equal "https://lh3.googleusercontent.com/0hJSje8_Z034MV_zDnQFGVt1Id-P21tDb3AP-J7WFtH0ITgL47YvUV642kZg1fXxtZaO47A14pRjWP2tG-2AlHm7jst2i8mB-yZQPX0I67SB4X9iJs4Co9lge5RlgsMoK8BeP1pXNtKuQkneNuBrxPr-x6n2KpVj7tA_E4k1krdZPj6Z_kZT8XzNIN_ztY3rD9HdwInpgaQ7HYImlTdGo_A50RoLEJ-7sK2_gFJAbSLIwnxEAAcaw7ELKxhO0p2QUbBk8Qwp3GnleViM2LVIUIQMcQDt7JvcKgPWH1DpNYpv8GRitVPOIBOt4mVvsVSJ5I6iBXU_7Tz1b1HQC97OajROBAWNSYryi_wqrac6MjfwFS0VbRxiAthPtUxApWpwTmxSF8LTqtUh2MQfLnOGp4wnX-CkfIQzqazG20xxXvsv24iLE1PZwjwkFb2vE8fglhUr0PAvEHseJz7D1PJwt5MtH38gdDPTK8o8WhJ1R4vGaiCqcekvR6OUGy4DYUEjW-zd3psZpwuQLxPLlgefvSvL4lErgVrxV8bg61cn7WcQ2Avev4L36DAS40RyY0cqInt_CJ-9Ovp3oRPTwTp0EwEL2XmHHKoW8yaSgJloyjAzWT9SHAAnoAoTjHWeHvXot8qdWvT8dwmq-LRsR_-cpE5-qNo2ejrkDUrCD5k7R35r5F_TKXLG9CX-Tkrf7g=w600-h512-no?authuser=0"
     end
 
     it "cannot create a new product with invalid information" do
@@ -140,17 +131,13 @@ describe ProductsController do
         expect(product.photo_url).must_equal new_puppy_toy[:product][:photo_url]
         expect(product.user_id).must_equal session[:user_id]
       end
-# ################################################################################################
 
-      it "will respond with flash error message for updating invalid product id" do
+      it "will not update product with invalid product id and will redirect" do
         expect { patch product_path(-1), params: new_puppy_toy }.wont_change "Product.count"
         must_redirect_to root_path
-        # expect(flash[:error]).must_equal "You can't edit a product that isn't yours"
       end
 
-# #################################################################################################
-
-      it "will not update if the params are invalid" do
+     it "will not update if the params are invalid" do
         new_puppy_toy[:product][:name] = nil
         product = Product.first
         expect { patch product_path(product.id), params: new_puppy_toy }.wont_change "Product.count"
