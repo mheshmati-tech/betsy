@@ -28,9 +28,11 @@ describe Order do
 
   describe "order_has_to_have_at_least_one_order_item_to_be_placed works" do
     it "raises error if order doesn't have an order item" do
-      @order_item.destroy    
+      @order.order_items.each do |order_item|
+        order_item.destroy    
+      end
       result = @order.valid?
-    
+
       expect(result).must_equal false
     end
   end
@@ -38,7 +40,8 @@ describe Order do
   describe "calculate_order_total works" do
     it "correctly calculates order total" do
       amt = @order.calculate_order_total
-      expect(amt).must_equal 11.98
+      calculated_amt = @order.order_items.map{|order_item| order_item.quantity * order_item.product.price}.sum
+      expect(amt).must_equal calculated_amt
     end
   end
 
@@ -63,35 +66,5 @@ describe Order do
       expect(@order.order_status).must_equal "complete"
     end
   end
-
-
-  # describe 'relations' do
-  #   it 'can set the author through "author"' do
-  #     # Create two models
-  #     author = Author.create!(name: "test author")
-  #     book = Book.new(title: "test book")
-
-  #     # Make the models relate to one another
-  #     book.author = author
-
-  #     # author_id should have changed accordingly
-  #     expect(book.author_id).must_equal author.id
-  #   end
-
-  #   it 'can set the author through "author_id"' do
-  #     # Create two models
-  #     author = Author.create!(name: "test author")
-  #     book = Book.new(title: "test book")
-
-  #     # Make the models relate to one another
-  #     book.author_id = author.id
-
-  #     # author should have changed accordingly
-  #     expect(book.author).must_equal author
-  #   end
-  # end
-
-
-
 
 end
