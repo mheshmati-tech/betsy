@@ -26,6 +26,12 @@ describe OrderItemsController do
       must_redirect_to product_path(product)
     end
 
+    it "returns error and redirects to product page if not enough inventory" do
+      expect { post product_order_items_path(-1),params:{quantity:10} }.wont_change "OrderItem.count"
+      expect(flash[:error]).must_equal "Not enough inventory available."
+      must_redirect_to product_path(product)
+    end
+
     it "successfully creates order item and order if current order does not exist" do
       patch cancel_order_path(@order.id)
       product = products(:bones)
