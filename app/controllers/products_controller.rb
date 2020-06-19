@@ -50,6 +50,7 @@ class ProductsController < ApplicationController
     if @product.update(
       product_params
     )
+  
       flash[:success] = "#{@product.name} successfully edited"
       redirect_to products_path
       return
@@ -60,13 +61,13 @@ class ProductsController < ApplicationController
     end
   end
 
-  
   def change_product_status
     if @product.product_status == "active"
       @product.product_status = "inactive"
     elsif @product.product_status == "inactive"
       @product.product_status = "active"
     end
+
     @product.save
     redirect_to root_path
     return
