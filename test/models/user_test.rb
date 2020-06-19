@@ -15,4 +15,48 @@ describe User do
 
     end
   end
+
+  describe "total revenue" do
+    it "correctly return the total revenue" do 
+      user = users(:grace)
+      order_items = user.order_items
+      total = 0
+      order_items.each do |order_item|
+        total += order_item.calculate_total
+      end     
+      expect(user.total_revenue).must_equal total
+    end
+  end
+
+  describe "filtered revenue" do
+    it "correctly return the filtered total revenue" do 
+      user = users(:grace)
+      order_items = user.order_items
+      total = 0
+      order_item_status = "paid"
+      order_items.each do |order_item|
+        if order_item.order_item_status == order_item_status
+          total += order_item.calculate_total
+        end
+      end     
+      expect(user.filtered_revenue(order_item_status)).must_equal total
+    end
+  end
+
+  describe "filtered revenue" do
+    it "correctly return the filtered total revenue" do 
+      user = users(:grace)
+      order_items = user.order_items
+      count = 0
+      order_item_status = "paid"
+      order_items.each do |order_item|
+        if order_item.order_item_status == order_item_status
+          count += 1
+        end
+      end     
+      expect(user.filtered_num_orders(order_item_status)).must_equal count
+    end
+  end
+
+
 end
