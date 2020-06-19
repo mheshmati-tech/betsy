@@ -91,11 +91,13 @@ describe UsersController do
     end
 
     it "returns error if not logged in" do 
+      delete logout_path
       get myaccount_path
+
       # user = users(:grace)
       # user.reload
       # expect(user).must_be_nil
-      expect(flash[:errors]).must_equal "You must be logged in to see this page"
+      expect(flash[:error]).must_equal "You must be logged in to see this page"
       must_redirect_to root_path
     end
   end
@@ -117,8 +119,9 @@ describe UsersController do
 
 
     it "returns error if not logged in" do 
+      delete logout_path
       get myorders_path
-      expect(flash[:errors]).must_equal "You must be logged in to see this page"
+      expect(flash[:error]).must_equal "You must be logged in to see this page"
       must_redirect_to root_path
     end
   end
