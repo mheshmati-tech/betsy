@@ -32,7 +32,7 @@ describe ReviewsController do
           product: @toy
         }
       }
-      expect { post product_reviews_path(product_id: @toy.id), params: valid_hash }.must_change "Review.count", 1 # product needs user_id
+      expect { post product_reviews_path(product_id: @toy.id), params: valid_hash }.must_change "Review.count", 1
       expect(Review.last.rating).must_equal valid_hash[:review][:rating]
       expect(Review.last.text).must_equal valid_hash[:review][:text]
       expect(Review.last.product_id).must_equal @toy.id
@@ -48,13 +48,34 @@ describe ReviewsController do
           product: @toy
         }
       }
-      expect { post product_reviews_path(product_id: @toy.id), params: invalid_hash }.wont_change "Review.count" # no product
+      expect { post product_reviews_path(product_id: @toy.id), params: invalid_hash }.wont_change "Review.count"
 
-      must_respond_with :redirect # test error: getting 200 OK instead of 3XX redirect
+      must_respond_with :bad_request
+    end
+
+    it "cannot leave review for non-existent product" do
+      invalid_hash = {
+        review: {
+          rating: 5,
+          text: "the best"
+        }
+      }
+      expect { post product_reviews_path(product_id: -1), params: invalid_hash }.wont_change "Review.count"
+      must_respond_with :not_found
     end
 
     it "does not allow users to review their own products" do
       perform_login(users(:grace))
+      valid_hash = {
+        review: {
+          rating: 5,
+          text: "the best",
+          product: @toy
+        }
+      }
+      expect { post product_reviews_path(product_id: @toy.id), params: valid_hash  }.wont_change "Review.count"
+      expect(flash[:error]).must_include "Users cannot review their own product"
+      must_redirect_to product_path(id: @toy.id)
       
     end
 
