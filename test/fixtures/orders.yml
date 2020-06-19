@@ -7,7 +7,6 @@ order1:
   credit_card_expiration: 01/21
   credit_card_CVV: 123
   billing_zip_code: 10001
-
 order2:
   order_status: complete
   email_address: louie@gmail.com

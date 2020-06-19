@@ -4,12 +4,30 @@ class OrderItemsController < ApplicationController
   def create
     order_item = OrderItem.new(quantity: params[:quantity], product_id: params[:product_id])
     if !order_item.is_in_stock
+  
       flash[:error] = "Not enough inventory available."
       redirect_to product_path(params[:product_id])
       return
     else
       if @current_order
-        existing_order(order_item)
+        existing_order_item = @current_order.order_items.find_by(product_id: params[:product_id])
+        order_item.order = @current_order
+        if existing_order_item
+          new_quantity = existing_order_item.quantity += params[:quantity].to_i
+          if existing_order_item.stock < new_quantity
+            flash[:error] = "Not enough inventory available." 
+            redirect_to product_path(params[:product_id])
+            return
+          end
+          if existing_order_item.save
+            flash[:success] = "order item quantity successfuly updated."
+            redirect_to product_path(params[:product_id])
+          else
+            flash[:error] = "unable to update order item quantity."
+            redirect_to product_path(params[:product_id])
+          end
+          return
+        end
       else
         @current_order = Order.create(order_status: "pending")
         session[:order_id] = @current_order.id
@@ -17,30 +35,13 @@ class OrderItemsController < ApplicationController
       end
     end
 
-    save_order(order_item)
-  end
-
-  def existing_order(order_item)
-    order_item.order_id = session[:order_id]
-    existing_order_item = @current_order.order_items.find_by(product_id: params[:product_id])
-    if existing_order_item
-      new_quantity = existing_order_item.quantity += params[:quantity].to_i #checking the new quantity before saving the changes
-      if existing_order_item.stock < new_quantity
-        flash[:error] = "Not enough inventory available."
-        redirect_to product_path(params[:product_id])
-        return
-      end
-      save_order(existing_order_item)
-    end
-  end
-
-  def save_order(order_item)
     if order_item.save
-      flash[:success] = "Success!"
+      flash[:success] = "order item succesfully created"
       redirect_to product_path(params[:product_id])
+
       return
     else
-      flash[:error] = "Error! #{order_item.errors.messages}"
+      flash[:error] = "order item NOT succesfully created :( #{order_item.errors.messages}"
       redirect_to product_path(params[:product_id])
       return
     end
@@ -79,7 +80,7 @@ class OrderItemsController < ApplicationController
   def find_order_item
     @order_item = OrderItem.find_by(id: params[:id])
     if @order_item.nil?
-      flash[:error] = "could not find order item."
+      flash[:error] = "Could not find order item."
       redirect_to root_path
       return
     end
