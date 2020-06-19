@@ -1,7 +1,7 @@
 {
   "Minitest": {
     "coverage": {
-      "/Users/ktvoort/Developer/projects/betsy/app/controllers/categories_controller.rb": {
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/controllers/categories_controller.rb": {
         "lines": [
           1,
           null,
@@ -63,7 +63,11 @@
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/controllers/homepages_controller.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/controllers/homepages_controller.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
           1,
           1,
@@ -76,7 +80,11 @@
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/controllers/order_items_controller.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/controllers/order_items_controller.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
           1,
           1,
@@ -1319,6 +1327,21 @@
           null,
 >>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
           null,
+<<<<<<< HEAD
+=======
+          null
+        ]
+      },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/controllers/orders_controller.rb": {
+=======
+      "/Users/ktvoort/Developer/projects/betsy/app/controllers/orders_controller.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
+        "lines": [
+          1,
+          1,
+          2,
+>>>>>>> 7ae60eb4bb6138fdc8b72b74ca8c608ff0ad1058
           null,
           null,
           null,
@@ -1401,7 +1424,15 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/charlotteadams/Developer/Rails/betsy/app/models/category.rb": {
+=======
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/controllers/products_controller.rb": {
+=======
+      "/Users/ktvoort/Developer/projects/betsy/app/controllers/products_controller.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
+>>>>>>> 7ae60eb4bb6138fdc8b72b74ca8c608ff0ad1058
         "lines": [
           1,
           1,
@@ -1503,7 +1534,15 @@
         "branches": {
         }
       },
+<<<<<<< HEAD
       "/Users/charlotteadams/Developer/Rails/betsy/app/controllers/orders_controller.rb": {
+=======
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/controllers/reviews_controller.rb": {
+=======
+      "/Users/ktvoort/Developer/projects/betsy/app/controllers/reviews_controller.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
+>>>>>>> 7ae60eb4bb6138fdc8b72b74ca8c608ff0ad1058
         "lines": [
           0,
           0,
@@ -1789,9 +1828,21 @@
           0,
           0,
           null,
+<<<<<<< HEAD
           0,
           0,
           0,
+=======
+          null
+        ]
+      },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/controllers/users_controller.rb": {
+=======
+      "/Users/ktvoort/Developer/projects/betsy/app/controllers/users_controller.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
+        "lines": [
+>>>>>>> 7ae60eb4bb6138fdc8b72b74ca8c608ff0ad1058
           null,
           0,
           0,
@@ -1835,10 +1886,17 @@
           null,
           null,
           1,
+<<<<<<< HEAD
+          18,
+          18,
+          18,
+          17,
+=======
           21,
           21,
           21,
           20,
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
           null,
           null,
           1,
@@ -1851,8 +1909,13 @@
           null,
           null,
           null,
+<<<<<<< HEAD
+          18,
+          18,
+=======
           21,
           21,
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
           null,
           null,
           1,
@@ -1860,10 +1923,13 @@
           2,
           2,
           null,
+<<<<<<< HEAD
+=======
           null,
           1,
           2,
           1,
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
           null,
           1,
           1,
@@ -1871,10 +1937,17 @@
           null,
           null,
           1,
+<<<<<<< HEAD
+          0,
+          0,
+          0,
+          0,
+=======
           3,
           2,
           2,
           2,
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
           null,
           null,
           1,
@@ -1885,7 +1958,11 @@
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/models/category.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/models/category.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
           1,
           1,
@@ -1894,14 +1971,22 @@
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/models/application_record.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/models/application_record.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
           1,
           1,
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/models/order_item.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/models/order_item.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
           1,
           1,
@@ -1910,7 +1995,11 @@
           1,
           null,
           1,
+<<<<<<< HEAD
+          11,
+=======
           14,
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
           null,
           null,
           1,
@@ -1923,7 +2012,11 @@
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/models/order.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/models/order.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
           1,
           1,
@@ -1964,7 +2057,11 @@
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/models/product.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/models/product.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
           1,
           1,
@@ -2003,7 +2100,11 @@
           1,
           null,
           1,
+<<<<<<< HEAD
+          218,
+=======
           243,
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
           null,
           null,
           null,
@@ -2014,7 +2115,11 @@
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/models/review.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/models/review.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
           1,
           1,
@@ -2024,7 +2129,11 @@
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/models/user.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/models/user.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
           1,
           null,
@@ -2039,7 +2148,11 @@
           null,
           null,
           1,
+<<<<<<< HEAD
+          0,
+=======
           2,
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
           null,
           null,
           1,
@@ -2066,7 +2179,11 @@
           null
         ]
       },
+<<<<<<< HEAD
+      "/Users/mairbear/Developer/Ada_Projects/Classroom/Rails/week-19/betsy/app/controllers/application_controller.rb": {
+=======
       "/Users/ktvoort/Developer/projects/betsy/app/controllers/application_controller.rb": {
+>>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
         "lines": [
 >>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
           0,
@@ -2120,7 +2237,11 @@
       }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     "timestamp": 1592537318
+=======
+    "timestamp": 1592538670
+>>>>>>> 7ae60eb4bb6138fdc8b72b74ca8c608ff0ad1058
 =======
     "timestamp": 1592538081
 >>>>>>> 13dd6e4053a03c4e80e8e16f8c93505f835b8b23
