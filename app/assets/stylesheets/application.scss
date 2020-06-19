@@ -19,6 +19,9 @@
 
 // Nav
 
+nav {
+    background: white;
+}
 nav a {
     color: #333333;
 }
@@ -30,34 +33,80 @@ nav a:hover {
 // Body
 
 body { 
-    padding-top: 60px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-top: 3rem;
     color: #333333;
-  }
+}
 
+.padded-container {
+    padding: 4rem;
+}
 
-.meet-the-team-page {
+h1 {
+    font-size: 6rem;
+}
+
+// Hero Image
+
+.hero-image {
+    width: 100%;
+    display: inline-block;
+}
+
+.hero-image img {
+    width: 100vw;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     text-align: center;
+
+    color: white;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 6rem;
+    text-shadow: 2px 2px #2d3142;
 }
 
-.team-header {
-    background-color: pink;
-    color: whitesmoke;
-    padding: 100px;
-}
-  .meet-team {
-    padding: 30px;
+// Products
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-  .team-members {
-      margin: auto;
+.product-container {
+    padding-top: 2rem;
+    width: 18rem;
+    border: 1px solid rgba(0,0,0,0.125);
+}
 
-  }
+.product-container img {
+    max-height: 100%;
+    max-width: 100%;
+}
 
-  .bio {
-      margin: auto;
-      text-align: center;
-      padding: 30px;
-  }
+.product-container-details {
+    padding: 1.25rem;
+    padding-bottom: 2rem;
+}
+
+// Footer
+
+footer {
+    margin-top: 10rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 100%;
+    background-color: #4f5d75;
+    color: #fff;
+    // TODO: get footer to stick to bottom of window
+}
+
+.copyright p {
+    text-align: center;
+}

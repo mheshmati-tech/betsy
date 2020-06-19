@@ -1,32 +1,37 @@
-<section>
-    <h1>Welcome!</h1>
+<section id="homepage-hero-image">
+    <div class="hero-image d-md-block">
+        <img src="https://i.imgur.com/ACNTG1b.jpg" />
+        <div class="hero-text">
+            <h1>Only the Best for Your Best Friend</h1>
+        </div>
+    </div>
 </section>
 <hr>
 
-<section>
-    <h2>Only the Best for Your Pet</h2>
+<section id="homepage-products" class ="padded-container">
+    <h2>Discover Paw-mazing Deals</h2>
     <p>blah blah blah buy some pet stuff</p>
     <%= link_to "All Products", products_path, class: "btn btn-primary" %>
 </section>
 <hr>
 
-<section>
+<section id="homepage-featured" class ="padded-container">
     <h2>Featured Product</h2>
     <% if !@products.empty?%>
         <% featured = Product.spotlight(@products)%>
-        <h3> <%= link_to(featured.name, product_path(featured.id)) %> <h3>
-        <%= image_tag featured.photo_url, alt: "products packaging appearance" %>
+        <%= render partial: "layouts/product_card", locals:{product:featured}%>
     <% else%>
         <h3>Coming Soon</h3>
     <% end%>
 </section>
 <hr>
 
-<section>
+<section id="homepage-top-rated" class ="padded-container">
     <h2>Top Rated Products</h2>
-    <% Product.top_rated(@products).each do |product|%>
-        <h3> <%= link_to(product.name, product_path(product.id)) %> <h3>
-        <%= image_tag product.photo_url, alt: "products packaging appearance" %>
-    <% end%>
+    <div class="flex-container">
+        <% Product.top_rated(@products).each do |product|%>
+            <%= render partial: "layouts/product_card", locals:{product:product}%>
+        <% end%>
+    </div>
 
 </section>

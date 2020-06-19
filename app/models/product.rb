@@ -18,6 +18,7 @@ class Product < ApplicationRecord
     return (total_rating / length).round(1)
   end
 
+  
   def self.spotlight(products)
     if !products.empty?
       return products.last

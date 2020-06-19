@@ -1,10 +1,11 @@
-<section>
-	<h1>User Show Page</h1>
-	<p>Name: <%=@user.name%></p>
-	<% @user.products.each do |product|%>
-		<p><%= product.name %></p>
-		<p><%= product.price %></p>
-		<p><%= product.description %></p>
-		<%= image_tag product.photo_url, alt: "products packaging appearance" %>
-	<% end %>
-</section>
+<main>
+	<section id="about-user" class="padded-container">
+		<h2>Products from <%=@user.name%></h2>
+		<br>
+		<div class="flex-container">
+			<% @user.products.each do |product|%>
+				<%= render partial: "layouts/product_card", locals:{product:product}%>
+			<% end%>
+		</div>
+	</section>
+</main>
