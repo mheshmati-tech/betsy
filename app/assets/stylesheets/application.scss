@@ -82,14 +82,18 @@ h1, h2 {
 }
 
 .product-container {
-    padding-top: 2rem;
+  
     width: 18rem;
     border: 1px solid rgba(0,0,0,0.125);
 }
 
 .product-container-large {
-    padding-top: 2rem;
     width: 25rem;
+}
+
+.product-image-small {
+    width: 17.9rem;
+    height: 18rem;
 }
 
 .product-container img {
