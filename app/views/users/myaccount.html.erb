@@ -1,12 +1,18 @@
 <main>
 	<section id="user-dashboard" class="padded-container">
-		<h1><%=@logged_user.name%></h1>
-		<h2>Date Joined: <%=@logged_user.created_at.strftime("%B %d, %Y")%></h2>
-		<%= link_to("Add Product", new_product_path) %>
-		<%= link_to("Add Category", new_category_path) %>
-		<%= link_to("Manage Orders", myorders_path) %>
-
-		<h2>List of Products</h2>
+		<h1 class="merchant_name"><%=@logged_user.name%></h1>
+		<div class="merchant_date">
+			<h3> Date Joined: 
+				<span><%=@logged_user.created_at.strftime("%B %d, %Y")%></span>
+			</h3>
+		</div>
+		<div class="merchant_buttons">
+			<ul>
+				<li><%= link_to "Add Product", new_product_path, class: "btn btn-primary" %></li>
+				<li><%= link_to "Add Category", new_category_path, class: "btn btn-primary" %></li>
+				<li><%= link_to "Manage Orders", myorders_path, class: "btn btn-primary" %></li>
+			</ul>
+	
 		<section class="order-items-table">
 			<table class="table">
 				<thead>
@@ -35,5 +41,3 @@
 		</section>
 	</section>
 </main>
-
-
