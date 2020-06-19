@@ -30,29 +30,29 @@ class ReviewsController < ApplicationController
     def edit
     end
 
-    def update
-        if @review.update(review_params)
-            flash[:success] = "Review successfully edited"
-            redirect_to root_path
-            return
-        else
-            flash.now[:error] = "Unable to edit review. Errors: #{@review.errors.messages}"
-            render :edit
-            return
-        end
-    end
+    # def update
+    #     if @review.update(review_params)
+    #         flash[:success] = "Review successfully edited"
+    #         redirect_to root_path
+    #         return
+    #     else
+    #         flash.now[:error] = "Unable to edit review. Errors: #{@review.errors.messages}"
+    #         render :edit
+    #         return
+    #     end
+    # end
 
-    def destroy
-        if @review.nil?
-            head :not_found
-            return
-        end
+    # def destroy
+    #     if @review.nil?
+    #         head :not_found
+    #         return
+    #     end
 
-        @review.destroy
-        flash[:success] = "Review successfully deleted"
-        redirect_to root_path
-        return
-    end
+    #     @review.destroy
+    #     flash[:success] = "Review successfully deleted"
+    #     redirect_to root_path
+    #     return
+    # end
 
     private
 
